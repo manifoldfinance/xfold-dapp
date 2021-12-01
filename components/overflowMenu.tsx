@@ -45,7 +45,7 @@ export default function OverflowMenu() {
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
             >
-              Buy XFOLD on SushiSwap
+              Buy xFOLD on SushiSwap
             </a>
           )}
         </Menu.Item>
@@ -62,7 +62,7 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href="https://manifold.finance"
+              href="https://app.manifold.finance"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
@@ -74,7 +74,7 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href="https://github.com/manifold.finance-protocol"
+              href="https://github.com/manifoldfinance"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
@@ -86,12 +86,12 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href="https://discord.gg/#"
+              href="https://forums.manifoldfinance.com"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
             >
-              Discord
+              Forums
             </a>
           )}
         </Menu.Item>
