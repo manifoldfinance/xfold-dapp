@@ -4,7 +4,7 @@
 
 import { Contract, Signer, utils } from 'ethers';
 import { Provider } from '@ethersproject/providers';
-import type { xFOLDFacet, xFOLDFacetInterface } from '../xFOLDFacet';
+import type { XFOLDFacet, XFOLDFacetInterface } from '../XFOLDFacet';
 
 const _abi = [
   {
@@ -277,7 +277,7 @@ const _abi = [
             type: 'uint256',
           },
         ],
-        internalType: 'struct LibxFOLDStorage.EpochBalance',
+        internalType: 'struct LibXFOLDStorage.EpochBalance',
         name: '',
         type: 'tuple',
       },
@@ -512,7 +512,7 @@ const _abi = [
         type: 'uint256',
       },
     ],
-    name: 'initxFOLD',
+    name: 'initXFOLD',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -605,7 +605,7 @@ const _abi = [
             type: 'uint256',
           },
         ],
-        internalType: 'struct LibxFOLDStorage.Stake',
+        internalType: 'struct LibXFOLDStorage.Stake',
         name: '',
         type: 'tuple',
       },
@@ -778,15 +778,15 @@ const _abi = [
   },
 ];
 
-export class xFOLDFacet__factory {
+export class XFOLDFacet__factory {
   static readonly abi = _abi;
-  static createInterface(): xFOLDFacetInterface {
-    return new utils.Interface(_abi) as xFOLDFacetInterface;
+  static createInterface(): XFOLDFacetInterface {
+    return new utils.Interface(_abi) as XFOLDFacetInterface;
   }
   static connect(
     address: string,
     signerOrProvider: Signer | Provider,
-  ): xFOLDFacet {
-    return new Contract(address, _abi, signerOrProvider) as xFOLDFacet;
+  ): XFOLDFacet {
+    return new Contract(address, _abi, signerOrProvider) as XFOLDFacet;
   }
 }

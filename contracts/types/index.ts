@@ -10,7 +10,7 @@ export type { LPRewards } from './LPRewards';
 export type { PoolRouter } from './PoolRouter';
 export type { Staking } from './Staking';
 export type { UniswapV2Pair } from './UniswapV2Pair';
-export type { xFOLDFacet } from './xFOLDFacet';
+export type { XFOLDFacet } from './XFOLDFacet';
 export type { WrappingRewards } from './WrappingRewards';
 
 export { BasketBalancer__factory } from './factories/BasketBalancer__factory';
@@ -22,5 +22,5 @@ export { LPRewards__factory } from './factories/LPRewards__factory';
 export { PoolRouter__factory } from './factories/PoolRouter__factory';
 export { Staking__factory } from './factories/Staking__factory';
 export { UniswapV2Pair__factory } from './factories/UniswapV2Pair__factory';
-export { xFOLDFacet__factory } from './factories/xFOLDFacet__factory';
+export { XFOLDFacet__factory } from './factories/XFOLDFacet__factory';
 export { WrappingRewards__factory } from './factories/WrappingRewards__factory';

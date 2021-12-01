@@ -42,7 +42,7 @@ export default function HarvestRewardsCard({
           <p className="leading-none">Harvestable Earnings</p>
 
           <p className="text-2xl leading-none font-semibold">
-            {`${formattedRewards} xFOLD`}
+            {`${formattedRewards} XFOLD`}
           </p>
         </div>
         {formattedExpectedRewards && (
@@ -50,7 +50,7 @@ export default function HarvestRewardsCard({
             <p className="leading-none">This Epoch&apos;s Earnings</p>
 
             <p className="leading-none">
-              {`+ ${formattedExpectedRewards} xFOLD`}
+              {`+ ${formattedExpectedRewards} XFOLD`}
             </p>
           </div>
         )}

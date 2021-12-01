@@ -4,7 +4,7 @@ import useContinuousTokenAllocation from '@/hooks/view/useContinuousTokenAllocat
 import useHasVotedInEpoch from '@/hooks/view/useHasVotedInEpoch';
 import useIsEpochInitialized from '@/hooks/view/useIsEpochInitialized';
 import useMaxDelta from '@/hooks/view/useMaxDelta';
-import usexFOLDStaked from '@/hooks/view/usexFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
 import useTokenAllocation from '@/hooks/view/useTokenAllocation';
 import handleError from '@/utils/handleError';
 import { parseUnits } from '@ethersproject/units';
@@ -22,7 +22,7 @@ export default function AllocationAdjustment() {
 
   const bddao = useBddao();
 
-  const { data: xfoldStaked } = usexFOLDStaked();
+  const { data: xfoldStaked } = useXFOLDStaked();
 
   const { data: hasVotedInEpoch, mutate: hasVotedInEpochMutate } =
     useHasVotedInEpoch();

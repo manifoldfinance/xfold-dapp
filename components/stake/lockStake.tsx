@@ -1,7 +1,7 @@
-import { usexFOLDFacetProxy } from '@/hooks/useContract';
+import { useXFOLDFacetProxy } from '@/hooks/useContract';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
-import usexFOLDStaked from '@/hooks/view/usexFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
 import useUserLockedUntil from '@/hooks/view/useUserLockedUntil';
 import calculateLockupMultiplier from '@/utils/calculateLockupMultiplier';
 import getFutureTimestamp from '@/utils/getFutureTimestamp';
@@ -19,12 +19,12 @@ export default function LockStake() {
 
   const lockupPeriod = useInput();
 
-  const USDFacet = usexFOLDFacetProxy();
+  const USDFacet = useXFOLDFacetProxy();
 
   const { data: userLockedUntil, mutate: userLockedUntilMutate } =
     useUserLockedUntil();
 
-  const { data: xfoldStaked } = usexFOLDStaked();
+  const { data: xfoldStaked } = useXFOLDStaked();
 
   const isLockupPeriodAfterCurrentLockedTimestamp = useMemo(() => {
     if (typeof userLockedUntil === 'undefined') {
@@ -36,7 +36,7 @@ export default function LockStake() {
     return newLockupPeriod.isAfter(dayjs.unix(userLockedUntil.timestamp));
   }, [userLockedUntil, lockupPeriod.value]);
 
-  async function lockxFOLD(event: FormEvent<HTMLFormElement>) {
+  async function lockXFOLD(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const _id = toast.loading('Waiting for confirmation');
@@ -95,7 +95,7 @@ export default function LockStake() {
   );
 
   return (
-    <form onSubmit={lockxFOLD}>
+    <form onSubmit={lockXFOLD}>
       <div className="space-y-4">
         <div>
           <h2 className="font-medium leading-5">Lock Stake</h2>

@@ -1,6 +1,6 @@
 import EpochProgress from '@/components/harvest/epochProgress';
 import GovRewardsHarvest from '@/components/harvest/govRewardsHarvest';
-import xFOLDWETHRewardsHarvest from '@/components/harvest/xfoldWethRewardsHarvest';
+import XFOLDWETHRewardsHarvest from '@/components/harvest/xfoldWethRewardsHarvest';
 import FOLDUSDCRewardsHarvest from '@/components/harvest/foldUsdcRewardsHarvest';
 import WrappingRewardsHarvest from '@/components/harvest/wrappingRewardsHarvest';
 
@@ -19,7 +19,7 @@ function HarvestView() {
 
           <FOLDUSDCRewardsHarvest />
 
-          <xFOLDWETHRewardsHarvest />
+          <XFOLDWETHRewardsHarvest />
         </div>
       </div>
     </section>

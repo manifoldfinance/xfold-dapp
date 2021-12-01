@@ -4,7 +4,7 @@ import type { ERC20 } from '@/contracts/types';
 import { formatUnits, parseUnits } from '@ethersproject/units';
 import useSWR from 'swr';
 import { useTokenContract } from './useContract';
-import usexFOLDPrice from './usexFOLDPrice';
+import useXFOLDPrice from './useXFOLDPrice';
 //import useFoldPrice from './useFoldPrice';
 import useWeb3Store from './useWeb3Store';
 
@@ -40,7 +40,7 @@ export default function useWrappingRewardsAPY() {
   const foldToken = useTokenContract(TOKEN_ADDRESSES.FOLD[chainId]);
 
   const { data: foldPrice } = useFoldPrice();
-  const { data: xfoldPrice } = usexFOLDPrice();
+  const { data: xfoldPrice } = useXFOLDPrice();
 
   const shouldFetch =
     !!foldToken &&

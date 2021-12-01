@@ -1,9 +1,9 @@
-import type { xFOLDFacet } from '@/contracts/types';
+import type { XFOLDFacet } from '@/contracts/types';
 import useSWR from 'swr';
-import { usexFOLDFacetProxy } from '../useContract';
+import { useXFOLDFacetProxy } from '../useContract';
 import useWeb3Store from '../useWeb3Store';
 
-function getxFOLDStaked(contract: xFOLDFacet) {
+function getXFOLDStaked(contract: XFOLDFacet) {
   return async (_: string, user: string) => {
     const value = await contract.balanceOf(user);
 
@@ -11,15 +11,15 @@ function getxFOLDStaked(contract: xFOLDFacet) {
   };
 }
 
-export default function usexFOLDStaked() {
+export default function useXFOLDStaked() {
   const account = useWeb3Store((state) => state.account);
 
-  const contract = usexFOLDFacetProxy();
+  const contract = useXFOLDFacetProxy();
 
   const shouldFetch = !!contract && typeof account === 'string';
 
   return useSWR(
-    shouldFetch ? ['xFOLDStaked', account] : null,
-    getxFOLDStaked(contract),
+    shouldFetch ? ['XFOLDStaked', account] : null,
+    getXFOLDStaked(contract),
   );
 }

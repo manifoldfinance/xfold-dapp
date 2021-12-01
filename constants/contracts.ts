@@ -4,12 +4,12 @@ export enum ContractNames {
   BASKET_BALANCER = 'BasketBalancer',
   POOL_ROUTER = 'PoolRouter',
   WRAPPING_REWARDS = 'WrappingRewards',
-  xFOLD_FACET_PROXY = 'xFOLDFacetProxy',
+  XFOLD_FACET_PROXY = 'XFOLDFacetProxy',
   GOV_REWARDS = 'GovRewards',
   LP_REWARDS_FOLD_USDC = 'LPRewardsFOLDUSDC',
-  LP_REWARDS_xFOLD_WETH = 'LPRewardsxFOLDWETH',
+  LP_REWARDS_XFOLD_WETH = 'LPRewardsXFOLDWETH',
   STAKING = 'Staking',
-  xFOLD_DAO = 'bddao',
+  XFOLD_DAO = 'bddao',
   FOLD_WRAPPER = 'FoldWrapper',
 }
 
@@ -30,7 +30,7 @@ export const CONTRACT_ADDRESSES: ContractAddresses = {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
-  [ContractNames.xFOLD_FACET_PROXY]: {
+  [ContractNames.XFOLD_FACET_PROXY]: {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
@@ -38,7 +38,7 @@ export const CONTRACT_ADDRESSES: ContractAddresses = {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
-  [ContractNames.LP_REWARDS_xFOLD_WETH]: {
+  [ContractNames.LP_REWARDS_XFOLD_WETH]: {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
@@ -50,7 +50,7 @@ export const CONTRACT_ADDRESSES: ContractAddresses = {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
-  [ContractNames.xFOLD_DAO]: {
+  [ContractNames.XFOLD_DAO]: {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },

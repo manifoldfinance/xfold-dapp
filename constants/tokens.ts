@@ -2,7 +2,7 @@ import { SupportedChainId } from './chains';
 
 export enum TokenNames {
   FOLD = 'FOLD',
-  xFOLD = 'xFOLD',
+  XFOLD = 'XFOLD',
   sETH = 'sETH',
   sBTC = 'sBTC',
   sUSD = 'sUSD',
@@ -20,7 +20,7 @@ export const TOKEN_ADDRESSES: TokenAddresses = {
     [SupportedChainId.MAINNET]: '0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
     [SupportedChainId.RINKEBY]: '0xe0dfbdbeb6d599b9142d84f76a6c4ff964f3949d',
   },
-  [TokenNames.xFOLD]: {
+  [TokenNames.XFOLD]: {
     [SupportedChainId.MAINNET]: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     [SupportedChainId.RINKEBY]: '0x64f8b3b0a2a16a2bdfa30568cb769ed5ba760fba',
   },
@@ -71,16 +71,16 @@ type TokenAssets = Partial<
 >;
 
 export const TOKEN_ASSETS: TokenAssets = {
-  [TokenNames.xFOLD]: {
+  [TokenNames.XFOLD]: {
     [SupportedChainId.MAINNET]: {
-      address: TOKEN_ADDRESSES[TokenNames.xFOLD][SupportedChainId.MAINNET],
+      address: TOKEN_ADDRESSES[TokenNames.XFOLD][SupportedChainId.MAINNET],
       decimals: 18,
-      symbol: TokenNames.xFOLD,
+      symbol: TokenNames.XFOLD,
     },
     [SupportedChainId.RINKEBY]: {
-      address: TOKEN_ADDRESSES[TokenNames.xFOLD][SupportedChainId.RINKEBY],
+      address: TOKEN_ADDRESSES[TokenNames.XFOLD][SupportedChainId.RINKEBY],
       decimals: 18,
-      symbol: TokenNames.xFOLD,
+      symbol: TokenNames.XFOLD,
     },
   },
   [TokenNames.FOLD]: {
@@ -100,7 +100,7 @@ export const TOKEN_ASSETS: TokenAssets = {
 export const SUSHI_SWAP_LINKS: Partial<Record<TokenNames, string>> = {
   [TokenNames.FOLD]:
     'https://app.sushi.com/swap?outputCurrency=0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
-  [TokenNames.xFOLD]:
+  [TokenNames.XFOLD]:
     'https://app.sushi.com/swap?outputCurrency=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
 };
 

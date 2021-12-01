@@ -14,7 +14,7 @@ import type { Web3Provider } from '@ethersproject/providers';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
 import { useFOLDUSDCRewards, useStaking } from './useContract';
-import usexFOLDPrice from './usexFOLDPrice';
+import useXFOLDPrice from './useXFOLDPrice';
 import useWeb3Store from './useWeb3Store';
 
 function getFOLDUSDCLPPrice(lpRewards: LPRewards, library: Web3Provider) {
@@ -95,7 +95,7 @@ export function useFOLDUSDCLPRewardsAPY() {
 
   const lpRewards = useFOLDUSDCRewards();
 
-  const { data: xfoldPrice } = usexFOLDPrice();
+  const { data: xfoldPrice } = useXFOLDPrice();
   const { data: lpPrice } = useFOLDUSDCLPPrice();
 
   const shouldFetch =

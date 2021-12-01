@@ -13,11 +13,11 @@ import { Contract } from '@ethersproject/contracts';
 import type { Web3Provider } from '@ethersproject/providers';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { usexFOLDWETHRewards, useStaking } from './useContract';
-import usexFOLDPrice from './usexFOLDPrice';
+import { useXFOLDWETHRewards, useStaking } from './useContract';
+import useXFOLDPrice from './useXFOLDPrice';
 import useWeb3Store from './useWeb3Store';
 
-function getxFOLDWETHLPPrice(lpRewards: LPRewards, library: Web3Provider) {
+function getXFOLDWETHLPPrice(lpRewards: LPRewards, library: Web3Provider) {
   return async () => {
     const poolAddress = await lpRewards.depositLP();
 
@@ -45,21 +45,21 @@ function getxFOLDWETHLPPrice(lpRewards: LPRewards, library: Web3Provider) {
   };
 }
 
-export function usexFOLDWETHLPPrice() {
+export function useXFOLDWETHLPPrice() {
   const library = useWeb3Store((state) => state.library);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const lpRewards = usexFOLDWETHRewards();
+  const lpRewards = useXFOLDWETHRewards();
 
   const shouldFetch = !!library && !!lpRewards && typeof chainId === 'number';
 
   return useSWR(
-    shouldFetch ? ['xFOLDWETHLPPrice', chainId] : null,
-    getxFOLDWETHLPPrice(lpRewards, library),
+    shouldFetch ? ['XFOLDWETHLPPrice', chainId] : null,
+    getXFOLDWETHLPPrice(lpRewards, library),
   );
 }
 
-function getxFOLDWETHLPRewardsAPY(lpRewards: LPRewards, library: Web3Provider) {
+function getXFOLDWETHLPRewardsAPY(lpRewards: LPRewards, library: Web3Provider) {
   return async (
     _: string,
     xfoldPrice: number,
@@ -91,14 +91,14 @@ function getxFOLDWETHLPRewardsAPY(lpRewards: LPRewards, library: Web3Provider) {
   };
 }
 
-export function usexFOLDWETHLPRewardsAPY() {
+export function useXFOLDWETHLPRewardsAPY() {
   const library = useWeb3Store((state) => state.library);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const lpRewards = usexFOLDWETHRewards();
+  const lpRewards = useXFOLDWETHRewards();
 
-  const { data: xfoldPrice } = usexFOLDPrice();
-  const { data: lpPrice } = usexFOLDWETHLPPrice();
+  const { data: xfoldPrice } = useXFOLDPrice();
+  const { data: lpPrice } = useXFOLDWETHLPPrice();
 
   const shouldFetch =
     !!lpRewards &&
@@ -109,13 +109,13 @@ export function usexFOLDWETHLPRewardsAPY() {
 
   return useSWR(
     shouldFetch
-      ? ['xFOLDWETHLPRewardsAPY', xfoldPrice, lpPrice, chainId]
+      ? ['XFOLDWETHLPRewardsAPY', xfoldPrice, lpPrice, chainId]
       : null,
-    getxFOLDWETHLPRewardsAPY(lpRewards, library),
+    getXFOLDWETHLPRewardsAPY(lpRewards, library),
   );
 }
 
-function getxFOLDWETHLPRewardsExpectedRewards(
+function getXFOLDWETHLPRewardsExpectedRewards(
   staking: Staking,
   lpRewards: LPRewards,
   library: Web3Provider,
@@ -141,21 +141,21 @@ function getxFOLDWETHLPRewardsExpectedRewards(
   };
 }
 
-export default function usexFOLDWETHLPRewardsExpectedRewards(
+export default function useXFOLDWETHLPRewardsExpectedRewards(
   userAddress: string,
 ) {
   const library = useWeb3Store((state) => state.library);
 
   const staking = useStaking();
 
-  const lpRewards = usexFOLDWETHRewards();
+  const lpRewards = useXFOLDWETHRewards();
 
   const shouldFetch =
     !!library && !!staking && !!lpRewards && typeof userAddress === 'string';
 
   return useSWR(
-    shouldFetch ? ['xFOLDWETHLPRewardsExpectedRewards', userAddress] : null,
-    getxFOLDWETHLPRewardsExpectedRewards(staking, lpRewards, library),
+    shouldFetch ? ['XFOLDWETHLPRewardsExpectedRewards', userAddress] : null,
+    getXFOLDWETHLPRewardsExpectedRewards(staking, lpRewards, library),
     {
       shouldRetryOnError: false,
     },

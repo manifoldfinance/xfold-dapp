@@ -1,7 +1,7 @@
-import usexFOLDWETHLPRewardsExpectedRewards, {
-  usexFOLDWETHLPRewardsAPY,
+import useXFOLDWETHLPRewardsExpectedRewards, {
+  useXFOLDWETHLPRewardsAPY,
 } from '@/hooks/xfoldWeth';
-import { usexFOLDWETHRewards } from '@/hooks/useContract';
+import { useXFOLDWETHRewards } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import useHarvestableUserRewards from '@/hooks/view/useHarvestableUserRewards';
@@ -12,13 +12,13 @@ import toast from 'react-hot-toast';
 import { TransactionToast } from '../customToast';
 import HarvestRewardsCard from './harvestRewardsCard';
 
-export default function xFOLDWETHRewardsHarvest() {
+export default function XFOLDWETHRewardsHarvest() {
   const account = useWeb3Store((state) => state.account);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const lpRewards = usexFOLDWETHRewards();
+  const lpRewards = useXFOLDWETHRewards();
 
-  const { data: apy } = usexFOLDWETHLPRewardsAPY();
+  const { data: apy } = useXFOLDWETHLPRewardsAPY();
 
   const { data: rewards, mutate } = useHarvestableUserRewards(
     account,
@@ -26,7 +26,7 @@ export default function xFOLDWETHRewardsHarvest() {
   );
 
   const { data: expectedRewards } =
-    usexFOLDWETHLPRewardsExpectedRewards(account);
+    useXFOLDWETHLPRewardsExpectedRewards(account);
 
   const formattedRewards = useFormattedBigNumber(rewards);
 
@@ -42,7 +42,7 @@ export default function xFOLDWETHRewardsHarvest() {
 
       toast.loading(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -53,7 +53,7 @@ export default function xFOLDWETHRewardsHarvest() {
 
       toast.success(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -73,7 +73,7 @@ export default function xFOLDWETHRewardsHarvest() {
       formattedExpectedRewards={formattedExpectedRewards}
       onSubmit={harvest}
       rewards={rewards}
-      title="xFOLD/ETH Pool Rewards"
+      title="XFOLD/ETH Pool Rewards"
     />
   );
 }

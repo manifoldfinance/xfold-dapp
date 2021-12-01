@@ -14,7 +14,7 @@ export default function useAddTokenToMetaMask(): {
   const addToken = useCallback(async () => {
     try {
       if (library && library.provider.isMetaMask && library.provider.request) {
-        const xFOLD = TOKEN_ASSETS.xFOLD[chainId];
+        const XFOLD = TOKEN_ASSETS.XFOLD[chainId];
 
         const FOLD = TOKEN_ASSETS.FOLD[chainId];
 
@@ -24,9 +24,9 @@ export default function useAddTokenToMetaMask(): {
             //@ts-ignore
             type: 'ERC20',
             options: {
-              address: xFOLD.address,
-              symbol: xFOLD.symbol,
-              decimals: xFOLD.decimals,
+              address: XFOLD.address,
+              symbol: XFOLD.symbol,
+              decimals: XFOLD.decimals,
             },
           },
         });

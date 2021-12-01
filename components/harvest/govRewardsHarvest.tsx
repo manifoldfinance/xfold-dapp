@@ -43,7 +43,7 @@ export default function GovRewardsHarvest() {
 
       toast.loading(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -54,7 +54,7 @@ export default function GovRewardsHarvest() {
 
       toast.success(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -74,7 +74,7 @@ export default function GovRewardsHarvest() {
       formattedRewards={formattedRewards}
       onSubmit={harvestGovRewards}
       rewards={rewards}
-      title="xFOLD Staking Rewards"
+      title="XFOLD Staking Rewards"
       slot={
         userLockedUntil && (
           <p className="font-semibold leading-5 text-indigo-500">{`${userLockedUntil.multiplier}x`}</p>

@@ -40,12 +40,12 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href={SUSHI_SWAP_LINKS.xFOLD}
+              href={SUSHI_SWAP_LINKS.XFOLD}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
             >
-              Buy xFOLD on SushiSwap
+              Buy XFOLD on SushiSwap
             </a>
           )}
         </Menu.Item>

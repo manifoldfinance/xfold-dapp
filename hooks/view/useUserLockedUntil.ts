@@ -1,14 +1,14 @@
-import type { xFOLDFacet } from '@/contracts/types';
+import type { XFOLDFacet } from '@/contracts/types';
 import calculateLockupMultiplier from '@/utils/calculateLockupMultiplier';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import useSWR from 'swr';
-import { usexFOLDFacetProxy } from '../useContract';
+import { useXFOLDFacetProxy } from '../useContract';
 import useWeb3Store from '../useWeb3Store';
 
 dayjs.extend(utc);
 
-function getUserLockedUntil(contract: xFOLDFacet) {
+function getUserLockedUntil(contract: XFOLDFacet) {
   return async (_: string, address: string) => {
     const lockedUntilTimestamp = await contract.userLockedUntil(address);
 
@@ -33,7 +33,7 @@ function getUserLockedUntil(contract: xFOLDFacet) {
 
 export default function useUserLockedUntil() {
   const account = useWeb3Store((state) => state.account);
-  const contract = usexFOLDFacetProxy();
+  const contract = useXFOLDFacetProxy();
 
   const shouldFetch = !!contract && typeof account === 'string';
 

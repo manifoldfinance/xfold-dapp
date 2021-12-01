@@ -5,10 +5,10 @@ import { Contract } from '@ethersproject/contracts';
 import type { Web3Provider } from '@ethersproject/providers';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { usexFOLDWETHRewards } from './useContract';
+import { useXFOLDWETHRewards } from './useContract';
 import useWeb3Store from './useWeb3Store';
 
-function getxFOLDPrice(lpRewards: LPRewards, library: Web3Provider) {
+function getXFOLDPrice(lpRewards: LPRewards, library: Web3Provider) {
   return async () => {
     const poolAddress = await lpRewards.depositLP();
 
@@ -35,16 +35,16 @@ function getxFOLDPrice(lpRewards: LPRewards, library: Web3Provider) {
   };
 }
 
-export default function usexFOLDPrice() {
+export default function useXFOLDPrice() {
   const library = useWeb3Store((state) => state.library);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const lpRewards = usexFOLDWETHRewards();
+  const lpRewards = useXFOLDWETHRewards();
 
   const shouldFetch = !!library && !!lpRewards && typeof chainId === 'number';
 
   return useSWR(
-    shouldFetch ? ['xFOLDPrice', chainId] : null,
-    getxFOLDPrice(lpRewards, library),
+    shouldFetch ? ['XFOLDPrice', chainId] : null,
+    getXFOLDPrice(lpRewards, library),
   );
 }

@@ -5,7 +5,7 @@ import GovRewards_ABI from '@/contracts/GovRewards.json';
 import LPRewards_ABI from '@/contracts/LPRewards.json';
 import PoolRouter_ABI from '@/contracts/PoolRouter.json';
 import Bddao_ABI from '@/contracts/bddao.json';
-import xFOLDFacet_ABI from '@/contracts/xFOLDFacet.json';
+import XFOLDFacet_ABI from '@/contracts/XFOLDFacet.json';
 import FoldWrapper_ABI from '@/contracts/FoldWrapper.json';
 import Staking_ABI from '@/contracts/Staking.json';
 import type {
@@ -15,7 +15,7 @@ import type {
   LPRewards,
   PoolRouter,
   Bddao,
-  xFOLDFacet,
+  XFOLDFacet,
   FoldWrapper,
   Staking,
   UniswapV2Pair,
@@ -112,12 +112,12 @@ export function useFoldWrapper() {
   );
 }
 
-export function usexFOLDFacetProxy() {
+export function useXFOLDFacetProxy() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<xFOLDFacet>(
-    CONTRACT_ADDRESSES.xFOLDFacetProxy[chainId],
-    xFOLDFacet_ABI,
+  return useContract<XFOLDFacet>(
+    CONTRACT_ADDRESSES.XFOLDFacetProxy[chainId],
+    XFOLDFacet_ABI,
   );
 }
 
@@ -136,11 +136,11 @@ export function useFOLDUSDCRewards() {
   );
 }
 
-export function usexFOLDWETHRewards() {
+export function useXFOLDWETHRewards() {
   const chainId = useWeb3Store(chainIdSelector);
 
   return useContract<LPRewards>(
-    CONTRACT_ADDRESSES.LPRewardsxFOLDWETH[chainId],
+    CONTRACT_ADDRESSES.LPRewardsXFOLDWETH[chainId],
     LPRewards_ABI,
   );
 }

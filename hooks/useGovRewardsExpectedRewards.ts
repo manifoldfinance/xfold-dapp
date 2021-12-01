@@ -1,10 +1,10 @@
-import { GovRewards, xFOLDFacet } from '@/contracts/types';
+import { GovRewards, XFOLDFacet } from '@/contracts/types';
 import { btof } from '@/utils/bn';
 import useSWR from 'swr';
-import { useGovRewards, usexFOLDFacetProxy } from './useContract';
+import { useGovRewards, useXFOLDFacetProxy } from './useContract';
 
 function getGovRewardsExpectedRewards(
-  USDFacet: xFOLDFacet,
+  USDFacet: XFOLDFacet,
   govRewards: GovRewards,
 ) {
   return async (_: string, userAddress: string) => {
@@ -22,7 +22,7 @@ function getGovRewardsExpectedRewards(
 }
 
 export default function useGovRewardsExpectedRewards(userAddress: string) {
-  const USDFacet = usexFOLDFacetProxy();
+  const USDFacet = useXFOLDFacetProxy();
 
   const govRewards = useGovRewards();
 

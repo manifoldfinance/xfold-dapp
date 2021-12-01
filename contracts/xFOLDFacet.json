@@ -269,7 +269,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct LibxFOLDStorage.EpochBalance",
+        "internalType": "struct LibXFOLDStorage.EpochBalance",
         "name": "",
         "type": "tuple"
       }
@@ -504,7 +504,7 @@
         "type": "uint256"
       }
     ],
-    "name": "initxFOLD",
+    "name": "initXFOLD",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -597,7 +597,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct LibxFOLDStorage.Stake",
+        "internalType": "struct LibXFOLDStorage.Stake",
         "name": "",
         "type": "tuple"
       }

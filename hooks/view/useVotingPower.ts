@@ -1,9 +1,9 @@
-import type { xFOLDFacet } from '@/contracts/types';
+import type { XFOLDFacet } from '@/contracts/types';
 import useSWR from 'swr';
-import { usexFOLDFacetProxy } from '../useContract';
+import { useXFOLDFacetProxy } from '../useContract';
 import useWeb3Store from '../useWeb3Store';
 
-function getVotingPower(USDFacet: xFOLDFacet) {
+function getVotingPower(USDFacet: XFOLDFacet) {
   return async (_: string, userAddress: string) => {
     const timestamp = Date.now();
 
@@ -30,7 +30,7 @@ function getVotingPower(USDFacet: xFOLDFacet) {
 export default function useVotingPower() {
   const account = useWeb3Store((state) => state.account);
 
-  const USDFacet = usexFOLDFacetProxy();
+  const USDFacet = useXFOLDFacetProxy();
 
   const shouldFetch = !!USDFacet && typeof account === 'string';
 

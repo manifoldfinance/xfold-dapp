@@ -37,7 +37,7 @@ interface ReignFacetInterface extends ethers.utils.Interface {
     'epochIsInitialized(uint128)': FunctionFragment;
     'getEpoch()': FunctionFragment;
     'getEpochUserBalance(address,uint128)': FunctionFragment;
-    'initxFOLD(address,uint256,uint256)': FunctionFragment;
+    'initXFOLD(address,uint256,uint256)': FunctionFragment;
     'lock(uint256)': FunctionFragment;
     'xfoldStaked()': FunctionFragment;
     'xfoldStakedAtTs(uint256)': FunctionFragment;
@@ -106,7 +106,7 @@ interface ReignFacetInterface extends ethers.utils.Interface {
     values: [string, BigNumberish],
   ): string;
   encodeFunctionData(
-    functionFragment: 'initxFOLD',
+    functionFragment: 'initXFOLD',
     values: [string, BigNumberish, BigNumberish],
   ): string;
   encodeFunctionData(functionFragment: 'lock', values: [BigNumberish]): string;
@@ -205,7 +205,7 @@ interface ReignFacetInterface extends ethers.utils.Interface {
     functionFragment: 'getEpochUserBalance',
     data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: 'initxFOLD', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'initXFOLD', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'lock', data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: 'xfoldStaked',
@@ -392,7 +392,7 @@ export class ReignFacet extends BaseContract {
       overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
-    initxFOLD(
+    initXFOLD(
       _xfoldToken: string,
       _epoch1Start: BigNumberish,
       _epochDuration: BigNumberish,
@@ -539,7 +539,7 @@ export class ReignFacet extends BaseContract {
     overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
-  initxFOLD(
+  initXFOLD(
     _xfoldToken: string,
     _epoch1Start: BigNumberish,
     _epochDuration: BigNumberish,
@@ -672,7 +672,7 @@ export class ReignFacet extends BaseContract {
       overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
-    initxFOLD(
+    initXFOLD(
       _xfoldToken: string,
       _epoch1Start: BigNumberish,
       _epochDuration: BigNumberish,
@@ -871,7 +871,7 @@ export class ReignFacet extends BaseContract {
       overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
-    initxFOLD(
+    initXFOLD(
       _xfoldToken: string,
       _epoch1Start: BigNumberish,
       _epochDuration: BigNumberish,
@@ -1014,7 +1014,7 @@ export class ReignFacet extends BaseContract {
       overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
-    initxFOLD(
+    initXFOLD(
       _xfoldToken: string,
       _epoch1Start: BigNumberish,
       _epochDuration: BigNumberish,

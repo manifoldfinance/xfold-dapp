@@ -42,7 +42,7 @@ export default function FOLDUSDCRewardsHarvest() {
 
       toast.loading(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -53,7 +53,7 @@ export default function FOLDUSDCRewardsHarvest() {
 
       toast.success(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,

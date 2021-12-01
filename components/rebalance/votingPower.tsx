@@ -14,12 +14,12 @@ export default function VotingPower() {
     0,
   );
 
-  const fmxFOLDStakedAtTs = useFormattedBigNumber(
+  const fmXFOLDStakedAtTs = useFormattedBigNumber(
     votingPower?.xfoldStakedAtTs,
     0,
   );
 
-  const fmxFOLDStaked = useFormattedBigNumber(votingPower?.xfoldStaked, 0);
+  const fmXFOLDStaked = useFormattedBigNumber(votingPower?.xfoldStaked, 0);
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function VotingPower() {
         <p className="text-2xl leading-none font-semibold">
           {fmVotingPower} <span className="text-gray-500">/</span>
           <br />
-          <span className="text-lg leading-none">{`${fmxFOLDStaked} votes`}</span>
+          <span className="text-lg leading-none">{`${fmXFOLDStaked} votes`}</span>
         </p>
       </Panel>
 
@@ -49,7 +49,7 @@ export default function VotingPower() {
         <p className="text-2xl leading-none font-semibold">
           {fmVotingPowerAtTs} <span className="text-gray-500">/</span>
           <br />
-          <span className="text-lg leading-none">{`${fmxFOLDStakedAtTs} votes`}</span>
+          <span className="text-lg leading-none">{`${fmXFOLDStakedAtTs} votes`}</span>
         </p>
       </Panel>
     </>

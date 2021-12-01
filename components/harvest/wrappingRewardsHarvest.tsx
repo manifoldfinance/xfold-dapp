@@ -45,7 +45,7 @@ export default function WrappingRewardsHarvest() {
 
       toast.loading(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,
@@ -56,7 +56,7 @@ export default function WrappingRewardsHarvest() {
 
       toast.success(
         <TransactionToast
-          message={`Harvest ${formattedRewards} xFOLD`}
+          message={`Harvest ${formattedRewards} XFOLD`}
           chainId={chainId}
           hash={transaction.hash}
         />,

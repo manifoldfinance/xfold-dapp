@@ -22,8 +22,8 @@ export const LP_FARMING_POOLS: Record<SupportedChainId, FarmingPool[]> = {
     },
     {
       address: '0xA2a0C3e53CCc6946E61949ADC46A713F601D645F',
-      name: 'SushiSwap xFOLD/ETH LP',
-      pairs: ['xFOLD', 'ETH'],
+      name: 'SushiSwap XFOLD/ETH LP',
+      pairs: ['XFOLD', 'ETH'],
       link: 'https://app.sushi.com/add/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
     },
   ],
@@ -36,8 +36,8 @@ export const LP_FARMING_POOLS: Record<SupportedChainId, FarmingPool[]> = {
     },
     {
       address: '0x9B98Ff54446C7Ccf3118f980B5F32520d7Fa5207',
-      name: 'Uniswap xFOLD/ETH LP',
-      pairs: ['xFOLD', 'ETH'],
+      name: 'Uniswap XFOLD/ETH LP',
+      pairs: ['XFOLD', 'ETH'],
       link: 'https://app.uniswap.org/#/add/v2/0xf65c93902ecc4c7979e92ed2cca01421e8021f77/0x64f8b3b0a2a16a2bdfa30568cb769ed5ba760fba',
     },
   ],
