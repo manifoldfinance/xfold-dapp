@@ -1,8 +1,8 @@
-import { useBasketBalancer, useDictatorDAO } from '@/hooks/useContract';
+import { useFoldToken, useDictatorDAO } from '@/hooks/useContract';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import useContinuousTokenAllocation from '@/hooks/view/useContinuousTokenAllocation';
 import useHasVotedInEpoch from '@/hooks/view/useHasVotedInEpoch';
-import useIsEpochInitialized from '@/hooks/view/useIsEpochInitialized';
+import useIsOperatorInitialized from '@/hooks/view/useIsOperatorInitialized';
 import useMaxDelta from '@/hooks/view/useMaxDelta';
 import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
 import useTokenAllocation from '@/hooks/view/useTokenAllocation';
@@ -18,14 +18,14 @@ import { TransactionToast } from '../customToast';
 export default function AllocationAdjustment() {
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const basketBalancer = useBasketBalancer();
+  const basketBalancer = useFoldToken();
 
   
   const DictatorDAO = useDictatorDAO();
 
   const { data: xfoldStaked } = useXFOLDStaked();
 
-  const { data: hasVotedInEpoch, mutate: hasVotedInEpochMutate } =
+  const { data: setOperator, mutate: hasVotedInEpochMutate } =
     useHasVotedInEpoch();
 
   const { data: delta } = useMaxDelta();
@@ -58,11 +58,11 @@ export default function AllocationAdjustment() {
     );
   }, [tokenAllocation]);
 
-  const { data: isEpochInitialized, mutate: isEpochInitializedMutate } =
-    useIsEpochInitialized();
+  const { data: isOperatorInitialized, mutate: isOperatorInitializedMutate } =
+    useIsOperatorInitialized();
 
   const canUpdate =
-    isEpochInitialized && !xfoldStaked?.isZero() && !hasVotedInEpoch;
+    isOperatorInitialized && !xfoldStaked?.isZero() && !setOperator;
 
   async function updateAllocationVote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -103,10 +103,10 @@ export default function AllocationAdjustment() {
   }
 
   async function enableVoting() {
-    const _id = toast.loading('Waiting for confirmation');
+    const _id = toast.loading('Waiting to set operator');
 
     try {
-      const transaction = await DictatorDAO.triggerWeightUpdate();
+      const transaction = await DictatorDAO.setOperator();
 
       toast.loading(
         <TransactionToast
@@ -128,7 +128,7 @@ export default function AllocationAdjustment() {
         { id: _id },
       );
 
-      isEpochInitializedMutate();
+      isOperatorInitializedMutate();
     } catch (error) {
       handleError(error, _id);
     }
@@ -248,7 +248,7 @@ export default function AllocationAdjustment() {
       </div>
 
       <div className="space-y-2">
-        {!isEpochInitialized && (
+        {!isOperatorInitialized && (
           <Button small onClick={enableVoting}>
             {`Enable voting for this epoch`}
           </Button>

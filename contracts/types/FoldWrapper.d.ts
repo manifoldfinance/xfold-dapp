@@ -122,7 +122,10 @@ interface FoldWrapperInterface extends ethers.utils.Interface {
     functionFragment: 'poolRouter',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: 'DictatorDAO',
+    values?: undefined,
+  ): string;
   encodeFunctionData(
     functionFragment: 'setLiquidationFee',
     values: [BigNumberish],
@@ -194,7 +197,10 @@ interface FoldWrapperInterface extends ethers.utils.Interface {
     data: BytesLike,
   ): Result;
   decodeFunctionResult(functionFragment: 'poolRouter', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'DictatorDAO',
+    data: BytesLike,
+  ): Result;
   decodeFunctionResult(
     functionFragment: 'setLiquidationFee',
     data: BytesLike,

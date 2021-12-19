@@ -1,6 +1,5 @@
 import {
-  BALANCER_POOL_ADDRESS,
-  CONTRACT_ADDRESSES,
+  CONTRACT_ADDRESSES
 } from '@/constants/contracts';
 import {
   MaxUint256,
@@ -8,7 +7,8 @@ import {
   MIN_INPUT_VALUE,
 } from '@/constants/numbers';
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
-import { usePoolRouter, useTokenContract } from '@/hooks/useContract';
+import { DictatorDAO } from '@/contracts/types/DictatorDAO';
+import { useDictatorDAO, useTokenContract } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useTotalSupply from '@/hooks/useTotalSupply';
@@ -35,7 +35,7 @@ export default function Deposit() {
   const account = useWeb3Store((state) => state.account);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const poolRouter = usePoolRouter();
+  const DOMODAO = useDictatorDAO();
 
   const { data: poolTokens } = useGetPoolTokens();
 
@@ -60,7 +60,7 @@ export default function Deposit() {
     useTokenAllowance(
       depositToken?.address,
       account,
-      CONTRACT_ADDRESSES.PoolRouter[chainId],
+      CONTRACT_ADDRESSES.DictatorDAO[chainId],
     );
 
   const formattedDepositBalance = useFormattedBigNumber(depositTokenBalance, 4);
@@ -109,7 +109,7 @@ export default function Deposit() {
       const slippage = slippageInput.hasValue ? slippageInput.value : '1';
 
       const poolBalance: BigNumber = await depositTokenContract.balanceOf(
-        BALANCER_POOL_ADDRESS[chainId],
+        DictatorDAO[chainId],
       );
 
       const maxDeposit = poolBalance.div(2);
@@ -123,7 +123,7 @@ export default function Deposit() {
       }
 
       const foldAmountOutSingle: BigNumber =
-        await poolRouter.getFoldAmountOutSingle(
+        await DOMODAO.getFoldAmountOutSingle(
           depositToken.address,
           tokenAmountIn,
           slippage,
@@ -133,7 +133,7 @@ export default function Deposit() {
         .mul(100 - Number(slippage))
         .div(100);
 
-      const transaction = await poolRouter.deposit(
+      const transaction = await DOMODAO.deposit(
         depositToken.address,
         tokenAmountIn,
         minPoolAmountOut,
@@ -175,7 +175,7 @@ export default function Deposit() {
 
     try {
       const transaction = await depositTokenContract.approve(
-        CONTRACT_ADDRESSES.PoolRouter[chainId],
+        CONTRACT_ADDRESSES.DictatorDAO[chainId],
         MaxUint256,
       );
 

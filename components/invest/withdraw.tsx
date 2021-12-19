@@ -1,10 +1,9 @@
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
 import {
   CONTRACT_ADDRESSES,
-  BALANCER_POOL_ADDRESS,
 } from '@/constants/contracts';
 import { MaxUint256, MIN_INPUT_VALUE } from '@/constants/numbers';
-import { usePoolRouter, useTokenContract } from '@/hooks/useContract';
+import { useTokenContract } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
@@ -27,7 +26,7 @@ export default function Withdraw() {
   const account = useWeb3Store((state) => state.account);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const poolRouter = usePoolRouter();
+  const stakingPool = mint();
 
   const { data: poolTokens } = useGetPoolTokens();
 
@@ -41,7 +40,7 @@ export default function Withdraw() {
     useTokenAllowance(
       TOKEN_ADDRESSES.FOLD[chainId],
       account,
-      CONTRACT_ADDRESSES.PoolRouter[chainId],
+      CONTRACT_ADDRESSES.DictatorDAO[chainId],
     );
 
   const [withdrawToken, withdrawTokenSet] = useState<Token>();
@@ -79,7 +78,7 @@ export default function Withdraw() {
       const minAmountOut = parseUnits(withdrawAmount);
 
       const poolBalance: BigNumber = await withdrawTokenContract.balanceOf(
-        BALANCER_POOL_ADDRESS[chainId],
+        CONTRACT_ADDRESSES[chainId],
       );
 
       const maxWithdraw = poolBalance.div(3);
@@ -92,7 +91,7 @@ export default function Withdraw() {
         );
       }
 
-      const poolAmountIn: BigNumber = await poolRouter.getFoldAmountInSingle(
+      const poolAmountIn: BigNumber = await stakingPool.mint(
         withdrawToken.address,
         minAmountOut,
         MaxUint256,
@@ -102,7 +101,7 @@ export default function Withdraw() {
         throw new Error('Not Enough FOLD');
       }
 
-      const transaction = await poolRouter.withdraw(
+      const transaction = await stakingPool.withdraw(
         withdrawToken.address,
         poolAmountIn,
         /**
@@ -144,7 +143,7 @@ export default function Withdraw() {
 
     try {
       const transaction = await foldContract.approve(
-        CONTRACT_ADDRESSES.PoolRouter[chainId],
+        CONTRACT_ADDRESSES.DictatorDAO[chainId],
         MaxUint256,
       );
 
@@ -227,3 +226,11 @@ export default function Withdraw() {
     </form>
   );
 }
+function usestakingPool() {
+  throw new Error('Function not implemented.');
+}
+
+function mint() {
+  throw new Error('Function not implemented.');
+}
+
