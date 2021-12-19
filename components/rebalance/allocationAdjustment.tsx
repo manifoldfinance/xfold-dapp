@@ -20,7 +20,6 @@ export default function AllocationAdjustment() {
 
   const basketBalancer = useFoldToken();
 
-  
   const DictatorDAO = useDictatorDAO();
 
   const { data: xfoldStaked } = useXFOLDStaked();

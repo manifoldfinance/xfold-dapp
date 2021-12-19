@@ -22,7 +22,6 @@ export default function LockStake() {
 
   const FOLD_ERC20 = useFoldToken();
 
-
   const { data: userLockedUntil, mutate: userLockedUntilMutate } =
     useUserLockedUntil();
 
@@ -61,7 +60,9 @@ export default function LockStake() {
         days === 365 * 2 ? days - 1 : days,
       );
 
-      const transaction = await FOLD_ERC20.lock(BigNumber.from(futureTimestamp));
+      const transaction = await FOLD_ERC20.lock(
+        BigNumber.from(futureTimestamp),
+      );
 
       lockupPeriod.clear();
 

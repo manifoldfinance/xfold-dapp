@@ -1,7 +1,5 @@
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
-import {
-  CONTRACT_ADDRESSES,
-} from '@/constants/contracts';
+import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import { MaxUint256, MIN_INPUT_VALUE } from '@/constants/numbers';
 import { useTokenContract } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
@@ -233,4 +231,3 @@ function usestakingPool() {
 function mint() {
   throw new Error('Function not implemented.');
 }
-

@@ -70,7 +70,10 @@ export default function Navigation() {
               <NavigationItem href="/stake" text="Stake" />
             </li>
             <li>
-              <NavigationItem href="https://t.me/manifoldfinance" text="Telegram" />
+              <NavigationItem
+                href="https://t.me/manifoldfinance"
+                text="Telegram"
+              />
             </li>
           </ul>
         </li>

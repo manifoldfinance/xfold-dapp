@@ -16,8 +16,10 @@ import Button, { MaxButton } from '../button';
 import { TransactionToast } from '../customToast';
 import NumericalInput from '../numericalInput';
 import { TokenSingle } from '../tokenSelect';
-import { BigNumber, isBigNumberish } from '@ethersproject/bignumber/lib/bignumber';
-
+import {
+  BigNumber,
+  isBigNumberish,
+} from '@ethersproject/bignumber/lib/bignumber';
 
 dayjs.extend(relativeTime);
 

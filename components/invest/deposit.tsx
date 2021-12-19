@@ -1,6 +1,4 @@
-import {
-  CONTRACT_ADDRESSES
-} from '@/constants/contracts';
+import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import {
   MaxUint256,
   MAX_FOLD_MINTABLE,

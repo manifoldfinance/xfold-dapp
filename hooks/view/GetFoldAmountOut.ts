@@ -1,33 +1,29 @@
-import type { PoolRouter } from '@/contracts/types';
+import { useFoldToken, useDictatorDAO } from '@/hooks/useContract';
+import type { DOMODAO as DictatorDAO } from '@/contracts/types';
 import { parseUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { usePoolRouter } from '../useContract';
 
-function getFoldAmountOut(contract: PoolRouter) {
-  return async (_: string, depositAmount: string, depositToken: string) => {
-    const getFoldAmountOutSingle = await contract.getFoldAmountOutSingle(
-      depositToken,
-      parseUnits(depositAmount),
-      1,
-    );
+function getFoldAmountOut(contract: DictatorDAO) {
+  return async (_: string, amount: string, operatorAddress: string) => {
+    const getFoldAmountOutSingle = await contract.mint(amount, operatorAddress);
 
     return getFoldAmountOutSingle;
   };
 }
 
 export default function useGetFoldAmountOut(
-  depositToken: string,
-  depositAmount: string,
+  amount: string,
+  operatorAddress: string,
 ) {
-  const contract = usePoolRouter();
+  const contract = useDictatorDAO();
 
   const shouldFetch =
     !!contract &&
-    typeof depositAmount === 'string' &&
-    typeof depositToken === 'string';
+    typeof amount === 'string' &&
+    typeof operatorAddress === 'string';
 
   return useSWR(
-    shouldFetch ? ['GetFoldAmountOut', depositAmount, depositToken] : null,
+    shouldFetch ? ['GetFoldAmountOut', amount, operatorAddress] : null,
     getFoldAmountOut(contract),
     {
       shouldRetryOnError: false,
