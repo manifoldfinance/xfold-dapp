@@ -5,7 +5,7 @@ function HomePage() {
   const { replace } = useRouter();
 
   useEffect(() => {
-    replace('/stake');
+    replace('/');
   }, [replace]);
 
   return null;
