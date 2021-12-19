@@ -1,16 +1,11 @@
 import { SupportedChainId } from './chains';
 
+
 export enum ContractNames {
-  BASKET_BALANCER = 'BasketBalancer',
-  POOL_ROUTER = 'PoolRouter',
-  WRAPPING_REWARDS = 'WrappingRewards',
-  XFOLD_FACET_PROXY = 'XFOLDFacetProxy',
-  GOV_REWARDS = 'GovRewards',
-  LP_REWARDS_FOLD_USDC = 'LPRewardsFOLDUSDC',
-  LP_REWARDS_XFOLD_WETH = 'LPRewardsXFOLDWETH',
   STAKING = 'Staking',
-  XFOLD_DAO = 'bddao',
-  FOLD_WRAPPER = 'FoldWrapper',
+  DOMODAO = 'DictatorDAO',
+  OPERATOR_ADDRESS = 'Operator',
+  FOLD = "FOLD"
 }
 
 type AddressMap = Record<SupportedChainId, string>;
@@ -18,49 +13,25 @@ type AddressMap = Record<SupportedChainId, string>;
 type ContractAddresses = Record<ContractNames, AddressMap>;
 
 export const CONTRACT_ADDRESSES: ContractAddresses = {
-  [ContractNames.BASKET_BALANCER]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.POOL_ROUTER]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.WRAPPING_REWARDS]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.XFOLD_FACET_PROXY]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.GOV_REWARDS]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.LP_REWARDS_XFOLD_WETH]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  },
-  [ContractNames.LP_REWARDS_FOLD_USDC]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
+  [ContractNames.FOLD]: {
+    [SupportedChainId.MAINNET]: '0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
+    [SupportedChainId.RINKEBY]: '0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
   },
   [ContractNames.STAKING]: {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
-  [ContractNames.XFOLD_DAO]: {
+  [ContractNames.DOMODAO]: {
     [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
     [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
   },
-  [ContractNames.FOLD_WRAPPER]: {
-    [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-    [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
+  [ContractNames.OPERATOR_ADDRESS]: {
+    [SupportedChainId.MAINNET]: '0xA0766B65A4f7B1da79a1AF79aC695456eFa28644',
+    [SupportedChainId.RINKEBY]: '0xA0766B65A4f7B1da79a1AF79aC695456eFa28644',
   },
 };
 
-export const BALANCER_POOL_ADDRESS: AddressMap = {
-  [SupportedChainId.MAINNET]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
-  [SupportedChainId.RINKEBY]: '0xbe9532432f05eb849f159F2b410829C36C95c5ec',
+export const OPERATOR: AddressMap = {
+  [SupportedChainId.MAINNET]: '0xA0766B65A4f7B1da79a1AF79aC695456eFa28644',
+  [SupportedChainId.RINKEBY]: '0xA0766B65A4f7B1da79a1AF79aC695456eFa28644',
 };

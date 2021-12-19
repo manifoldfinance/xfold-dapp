@@ -1,4 +1,4 @@
-import { useBasketBalancer, useBddao } from '@/hooks/useContract';
+import { useBasketBalancer, useDictatorDAO } from '@/hooks/useContract';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import useContinuousTokenAllocation from '@/hooks/view/useContinuousTokenAllocation';
 import useHasVotedInEpoch from '@/hooks/view/useHasVotedInEpoch';
@@ -20,7 +20,8 @@ export default function AllocationAdjustment() {
 
   const basketBalancer = useBasketBalancer();
 
-  const bddao = useBddao();
+  
+  const DictatorDAO = useDictatorDAO();
 
   const { data: xfoldStaked } = useXFOLDStaked();
 
@@ -105,7 +106,7 @@ export default function AllocationAdjustment() {
     const _id = toast.loading('Waiting for confirmation');
 
     try {
-      const transaction = await bddao.triggerWeightUpdate();
+      const transaction = await DictatorDAO.triggerWeightUpdate();
 
       toast.loading(
         <TransactionToast

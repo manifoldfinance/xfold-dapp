@@ -445,7 +445,7 @@
   },
   {
     "inputs": [],
-    "name": "bddao",
+    "name": "DictatorDAO",
     "outputs": [
       {
         "internalType": "address",

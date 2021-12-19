@@ -40,7 +40,7 @@ interface FoldWrapperInterface extends ethers.utils.Interface {
     'liquidationFee(address)': FunctionFragment;
     'maxLiquidationFee()': FunctionFragment;
     'poolRouter()': FunctionFragment;
-    'bddao()': FunctionFragment;
+    'DictatorDAO()': FunctionFragment;
     'setLiquidationFee(uint256)': FunctionFragment;
     'setMaxLiquidationFee(uint256)': FunctionFragment;
     'withdraw(address,uint256)': FunctionFragment;
@@ -122,7 +122,7 @@ interface FoldWrapperInterface extends ethers.utils.Interface {
     functionFragment: 'poolRouter',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'bddao', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
   encodeFunctionData(
     functionFragment: 'setLiquidationFee',
     values: [BigNumberish],
@@ -194,7 +194,7 @@ interface FoldWrapperInterface extends ethers.utils.Interface {
     data: BytesLike,
   ): Result;
   decodeFunctionResult(functionFragment: 'poolRouter', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'bddao', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: 'setLiquidationFee',
     data: BytesLike,
@@ -345,7 +345,7 @@ export class FoldWrapper extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<[string]>;
 
-    bddao(overrides?: CallOverrides): Promise<[string]>;
+    DictatorDAO(overrides?: CallOverrides): Promise<[string]>;
 
     setLiquidationFee(
       value: BigNumberish,
@@ -439,7 +439,7 @@ export class FoldWrapper extends BaseContract {
 
   poolRouter(overrides?: CallOverrides): Promise<string>;
 
-  bddao(overrides?: CallOverrides): Promise<string>;
+  DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
   setLiquidationFee(
     value: BigNumberish,
@@ -528,7 +528,7 @@ export class FoldWrapper extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<string>;
 
-    bddao(overrides?: CallOverrides): Promise<string>;
+    DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
     setLiquidationFee(
       value: BigNumberish,
@@ -672,7 +672,7 @@ export class FoldWrapper extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<BigNumber>;
 
-    bddao(overrides?: CallOverrides): Promise<BigNumber>;
+    DictatorDAO(overrides?: CallOverrides): Promise<BigNumber>;
 
     setLiquidationFee(
       value: BigNumberish,
@@ -777,7 +777,7 @@ export class FoldWrapper extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    bddao(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    DictatorDAO(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     setLiquidationFee(
       value: BigNumberish,

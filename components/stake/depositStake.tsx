@@ -26,7 +26,7 @@ export default function DepositStake() {
 
   const { data: xfoldBalance, mutate: xfoldBalanceMutate } = useTokenBalance(
     account,
-    TOKEN_ADDRESSES.XFOLD[chainId],
+    TOKEN_ADDRESSES.xFOLD[chainId],
   );
 
   const { mutate: xfoldStakedMutate } = useXFOLDStaked();
@@ -35,11 +35,11 @@ export default function DepositStake() {
 
   const depositInput = useInput();
 
-  const xfoldContract = useTokenContract(TOKEN_ADDRESSES.XFOLD[chainId]);
+  const xfoldContract = useTokenContract(TOKEN_ADDRESSES.xFOLD[chainId]);
 
   const { data: xfoldAllowance, mutate: xfoldAllowanceMutate } =
     useTokenAllowance(
-      TOKEN_ADDRESSES.XFOLD[chainId],
+      TOKEN_ADDRESSES.xFOLD[chainId],
       account,
       CONTRACT_ADDRESSES.XFOLDFacetProxy[chainId],
     );
@@ -110,11 +110,11 @@ export default function DepositStake() {
         MaxUint256,
       );
 
-      toast.loading(`Approve XFOLD`, { id: _id });
+      toast.loading(`Approve xFOLD`, { id: _id });
 
       await transaction.wait();
 
-      toast.success(`Approve XFOLD`, { id: _id });
+      toast.success(`Approve xFOLD`, { id: _id });
 
       xfoldAllowanceMutate();
     } catch (error) {
@@ -137,11 +137,11 @@ export default function DepositStake() {
 
       <div>
         <div className="flex space-x-4 mb-2">
-          <TokenSingle symbol="XFOLD" />
+          <TokenSingle symbol="FOLD" />
 
           <div className="flex-1">
             <label className="sr-only" htmlFor="stakeDeposit">
-              Enter amount of XFOLD to deposit
+              Enter amount of FOLD to deposit
             </label>
 
             <NumericalInput
@@ -156,7 +156,7 @@ export default function DepositStake() {
         <p className="text-sm text-gray-300 h-5">
           {xfoldBalance && formattedXFOLDBalance ? (
             <>
-              <span>{`Balance: ${formattedXFOLDBalance} XFOLD`}</span>{' '}
+              <span>{`Balance: ${formattedXFOLDBalance} xFOLD`}</span>{' '}
               {!inputIsMax && <MaxButton onClick={setMax} />}
             </>
           ) : null}

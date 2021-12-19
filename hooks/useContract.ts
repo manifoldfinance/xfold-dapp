@@ -1,31 +1,17 @@
 import { CONTRACT_ADDRESSES } from '@/constants/contracts';
-import BasketBalancer_ABI from '@/contracts/BasketBalancer.json';
 import ERC20_ABI from '@/contracts/ERC20.json';
-import GovRewards_ABI from '@/contracts/GovRewards.json';
-import LPRewards_ABI from '@/contracts/LPRewards.json';
-import PoolRouter_ABI from '@/contracts/PoolRouter.json';
-import Bddao_ABI from '@/contracts/bddao.json';
-import XFOLDFacet_ABI from '@/contracts/XFOLDFacet.json';
-import FoldWrapper_ABI from '@/contracts/FoldWrapper.json';
-import Staking_ABI from '@/contracts/Staking.json';
+import FOLD_ABI from '@/contracts/FOLD.json';
+import DOMODAO_ABI from '@/contracts/DictatorDao.json';
 import type {
-  BasketBalancer,
   ERC20,
-  GovRewards,
-  LPRewards,
-  PoolRouter,
-  Bddao,
-  XFOLDFacet,
-  FoldWrapper,
-  Staking,
-  UniswapV2Pair,
-  WrappingRewards,
+  DOMODAO,
+  FOLD,
 } from '@/contracts/types';
-import UniswapV2Pair_ABI from '@/contracts/UniswapV2Pair.json';
-import WrappingRewards_ABI from '@/contracts/WrappingRewards.json';
 import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
+import { DictatorDAO } from '@/contracts/types/DictatorDAO';
+
 
 const chainIdSelector = (state: State) => state.chainId;
 const accountSelector = (state: State) => state.account;
@@ -57,90 +43,27 @@ export function useTokenContract(tokenAddress?: string) {
   return useContract<ERC20>(tokenAddress, ERC20_ABI);
 }
 
-export function usePoolRouter() {
+export function useDictatorDao() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<PoolRouter>(
-    CONTRACT_ADDRESSES.PoolRouter[chainId],
-    PoolRouter_ABI,
+  return useContract<DOMODAO>(
+    CONTRACT_ADDRESSES.DictatorDAO[chainId],
+    DOMODAO_ABI,
   );
 }
 
-export function useGovRewards() {
+export function useFoldToken() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<GovRewards>(
-    CONTRACT_ADDRESSES.GovRewards[chainId],
-    GovRewards_ABI,
+  return useContract<FOLD>(
+    CONTRACT_ADDRESSES.FOLD[chainId],
+    FOLD_ABI,
   );
 }
 
-export function useBasketBalancer() {
+
+export function useDictatorDAO() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<BasketBalancer>(
-    CONTRACT_ADDRESSES.BasketBalancer[chainId],
-    BasketBalancer_ABI,
-  );
-}
-
-export function useWrappingRewards() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<WrappingRewards>(
-    CONTRACT_ADDRESSES.WrappingRewards[chainId],
-    WrappingRewards_ABI,
-  );
-}
-
-export function useUniswapV2Pair(tokenAddress: string) {
-  return useContract<UniswapV2Pair>(tokenAddress, UniswapV2Pair_ABI);
-}
-
-export function useStaking() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<Staking>(CONTRACT_ADDRESSES.Staking[chainId], Staking_ABI);
-}
-
-export function useFoldWrapper() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<FoldWrapper>(
-    CONTRACT_ADDRESSES.FoldWrapper[chainId],
-    FoldWrapper_ABI,
-  );
-}
-
-export function useXFOLDFacetProxy() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<XFOLDFacet>(
-    CONTRACT_ADDRESSES.XFOLDFacetProxy[chainId],
-    XFOLDFacet_ABI,
-  );
-}
-
-export function useBddao() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<Bddao>(CONTRACT_ADDRESSES.bddao[chainId], Bddao_ABI);
-}
-
-export function useFOLDUSDCRewards() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<LPRewards>(
-    CONTRACT_ADDRESSES.LPRewardsFOLDUSDC[chainId],
-    LPRewards_ABI,
-  );
-}
-
-export function useXFOLDWETHRewards() {
-  const chainId = useWeb3Store(chainIdSelector);
-
-  return useContract<LPRewards>(
-    CONTRACT_ADDRESSES.LPRewardsXFOLDWETH[chainId],
-    LPRewards_ABI,
-  );
+  return useContract<DictatorDAO>(CONTRACT_ADDRESSES.DictatorDAO[chainId], DOMODAO_ABI);
 }

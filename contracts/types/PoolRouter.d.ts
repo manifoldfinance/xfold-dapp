@@ -36,7 +36,7 @@ interface PoolRouterInterface extends ethers.utils.Interface {
     'getTokensAmountOut(uint256,uint256[])': FunctionFragment;
     'liquidate(address,address,uint256,uint256)': FunctionFragment;
     'protocolFee()': FunctionFragment;
-    'bddao()': FunctionFragment;
+    'DictatorDAO()': FunctionFragment;
     'smartPool()': FunctionFragment;
     'foldToken()': FunctionFragment;
     'treasury()': FunctionFragment;
@@ -105,7 +105,7 @@ interface PoolRouterInterface extends ethers.utils.Interface {
     functionFragment: 'protocolFee',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'bddao', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
   encodeFunctionData(functionFragment: 'smartPool', values?: undefined): string;
   encodeFunctionData(functionFragment: 'foldToken', values?: undefined): string;
   encodeFunctionData(functionFragment: 'treasury', values?: undefined): string;
@@ -173,7 +173,7 @@ interface PoolRouterInterface extends ethers.utils.Interface {
     functionFragment: 'protocolFee',
     data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: 'bddao', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'smartPool', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'foldToken', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'treasury', data: BytesLike): Result;
@@ -307,7 +307,7 @@ export class PoolRouter extends BaseContract {
 
     protocolFee(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    bddao(overrides?: CallOverrides): Promise<[string]>;
+    DictatorDAO(overrides?: CallOverrides): Promise<[string]>;
 
     smartPool(overrides?: CallOverrides): Promise<[string]>;
 
@@ -404,7 +404,7 @@ export class PoolRouter extends BaseContract {
 
   protocolFee(overrides?: CallOverrides): Promise<BigNumber>;
 
-  bddao(overrides?: CallOverrides): Promise<string>;
+  DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
   smartPool(overrides?: CallOverrides): Promise<string>;
 
@@ -498,7 +498,7 @@ export class PoolRouter extends BaseContract {
 
     protocolFee(overrides?: CallOverrides): Promise<BigNumber>;
 
-    bddao(overrides?: CallOverrides): Promise<string>;
+    DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
     smartPool(overrides?: CallOverrides): Promise<string>;
 
@@ -598,7 +598,7 @@ export class PoolRouter extends BaseContract {
 
     protocolFee(overrides?: CallOverrides): Promise<BigNumber>;
 
-    bddao(overrides?: CallOverrides): Promise<BigNumber>;
+    DictatorDAO(overrides?: CallOverrides): Promise<BigNumber>;
 
     smartPool(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -698,7 +698,7 @@ export class PoolRouter extends BaseContract {
 
     protocolFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    bddao(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    DictatorDAO(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     smartPool(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

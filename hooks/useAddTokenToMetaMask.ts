@@ -14,7 +14,7 @@ export default function useAddTokenToMetaMask(): {
   const addToken = useCallback(async () => {
     try {
       if (library && library.provider.isMetaMask && library.provider.request) {
-        const XFOLD = TOKEN_ASSETS.XFOLD[chainId];
+        const XFOLD = TOKEN_ASSETS.xFOLD[chainId];
 
         const FOLD = TOKEN_ASSETS.FOLD[chainId];
 

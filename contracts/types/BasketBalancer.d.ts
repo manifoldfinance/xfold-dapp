@@ -32,7 +32,7 @@ interface BasketBalancerInterface extends ethers.utils.Interface {
     'lastEpochUpdate()': FunctionFragment;
     'maxDelta()': FunctionFragment;
     'poolRouter()': FunctionFragment;
-    'bddao()': FunctionFragment;
+    'DictatorDAO()': FunctionFragment;
     'xfoldDiamond()': FunctionFragment;
     'removeToken(address)': FunctionFragment;
     'setMaxDelta(uint256)': FunctionFragment;
@@ -80,7 +80,7 @@ interface BasketBalancerInterface extends ethers.utils.Interface {
     functionFragment: 'poolRouter',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'bddao', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
   encodeFunctionData(
     functionFragment: 'xfoldDiamond',
     values?: undefined,
@@ -133,7 +133,7 @@ interface BasketBalancerInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: 'maxDelta', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'poolRouter', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'bddao', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: 'xfoldDiamond',
     data: BytesLike,
@@ -250,7 +250,7 @@ export class BasketBalancer extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<[string]>;
 
-    bddao(overrides?: CallOverrides): Promise<[string]>;
+    DictatorDAO(overrides?: CallOverrides): Promise<[string]>;
 
     xfoldDiamond(overrides?: CallOverrides): Promise<[string]>;
 
@@ -318,7 +318,7 @@ export class BasketBalancer extends BaseContract {
 
   poolRouter(overrides?: CallOverrides): Promise<string>;
 
-  bddao(overrides?: CallOverrides): Promise<string>;
+  DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
   xfoldDiamond(overrides?: CallOverrides): Promise<string>;
 
@@ -386,7 +386,7 @@ export class BasketBalancer extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<string>;
 
-    bddao(overrides?: CallOverrides): Promise<string>;
+    DictatorDAO(overrides?: CallOverrides): Promise<string>;
 
     xfoldDiamond(overrides?: CallOverrides): Promise<string>;
 
@@ -477,7 +477,7 @@ export class BasketBalancer extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<BigNumber>;
 
-    bddao(overrides?: CallOverrides): Promise<BigNumber>;
+    DictatorDAO(overrides?: CallOverrides): Promise<BigNumber>;
 
     xfoldDiamond(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -549,7 +549,7 @@ export class BasketBalancer extends BaseContract {
 
     poolRouter(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    bddao(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    DictatorDAO(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     xfoldDiamond(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

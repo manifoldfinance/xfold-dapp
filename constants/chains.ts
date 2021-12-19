@@ -1,6 +1,6 @@
 // TODO replace INFURA with lol ourselves
 
-export const INFURA_ID = '51f84cc2f3374b388939ef48c00e87ac';
+export const INFURA_ID = '3ff0c675dc614116aa126b14f6368971';
 
 export enum SupportedChainId {
   MAINNET = 1,

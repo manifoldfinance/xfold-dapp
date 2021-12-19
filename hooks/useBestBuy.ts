@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-const BASE = `https://best-buy-provider.vercel.app/api/token_list`;
+const BASE = ``;
 
 function getBestBuy() {
   type Data = Record<string, bigint>;

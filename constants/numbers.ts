@@ -1,20 +1,24 @@
 import { SupportedChainId } from './chains';
 
-export const EPOCH_DURATION = 604800;
+// 604800 = 7 Days
+// 86400 = 1 days
+export const EPOCH_DURATION = 86400;
 
 /**
- * Will be this value for the next two years as of August 16, 2021
+ * example: export const EPOCH_REWARDS = 2403846.153;
+
  */
-export const EPOCH_REWARDS = 2403846.153;
+export const EPOCH_REWARDS = 0;
 
 /**
- * Will be this value for the next two years as of August 16, 2021
+ *LP Rewards
+ * example: export const LP_EPOCH_REWARDS = 96153.84;
  */
-export const LP_EPOCH_REWARDS = 96153.84;
+export const LP_EPOCH_REWARDS = 0;
 
 export const DAO_THRESHOLD = {
-  [SupportedChainId.MAINNET]: 15_000_000,
-  [SupportedChainId.RINKEBY]: 4_000_000,
+  [SupportedChainId.MAINNET]: 2_000_000,
+  [SupportedChainId.RINKEBY]: 2_000_000,
 };
 
 export const MaxUint256 = BigInt(
@@ -23,4 +27,4 @@ export const MaxUint256 = BigInt(
 
 export const MIN_INPUT_VALUE = 0.00000000000000001;
 
-export const MAX_FOLD_MINTABLE = 4_000_000;
+export const MAX_FOLD_MINTABLE = 2_000_000;

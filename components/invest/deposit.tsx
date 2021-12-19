@@ -321,7 +321,7 @@ export default function Deposit() {
       <div className="h-px w-full bg-primary-300" />
 
       <div className="flex justify-between">
-        <p className="leading-none">FOLD Received</p>
+        <p className="leading-none">xFOLD Received</p>
 
         <p className="leading-none">
           {formattedFoldAmountOut === '0.00' ? `-` : formattedFoldAmountOut}
@@ -329,7 +329,7 @@ export default function Deposit() {
       </div>
 
       <div className="flex justify-between">
-        <p className="leading-none">FOLD Supply</p>
+        <p className="leading-none">xFOLD Supply</p>
 
         <p className="leading-none">{`${formattedTotalSupply} / ${commify(
           MAX_FOLD_MINTABLE,
