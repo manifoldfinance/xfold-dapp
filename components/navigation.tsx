@@ -37,7 +37,7 @@ export default function Navigation() {
               <MobileMenu />
             </div>
 
-            <Link href="/invest">
+            <Link href="#">
               <a
                 className="flex items-center md:space-x-2 focus:outline-none focus:text-gray-300 hover:text-gray-300 transition-colors"
                 aria-label="Home"
@@ -64,13 +64,13 @@ export default function Navigation() {
         <li className="flex-1 hidden xl:block">
           <ul className="md:ml-4 flex space-x-2 xl:space-x-4">
             <li>
-              <NavigationItem href="/invest" text="Trading" />
+              <NavigationItem href="#" text="Trading" />
             </li>
             <li>
               <NavigationItem href="/stake" text="Stake" />
             </li>
             <li>
-              <NavigationItem href="/farming" text="Farming" />
+              <NavigationItem href="https://t.me/manifoldfinance" text="Telegram" />
             </li>
           </ul>
         </li>
