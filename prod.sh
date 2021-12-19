@@ -5,7 +5,6 @@ export CI=''
 echo "Configuring..."
 set -a
 yarn install --frozen-lockfile
-yarn run postinstall
 set +a
 export NODE_ENV='production'
 set -a
