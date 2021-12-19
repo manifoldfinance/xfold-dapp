@@ -3,7 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  distDir: 'out',
+//  distDir: 'out',
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
   reactStrictMode: true,
