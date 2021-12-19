@@ -1,16 +1,15 @@
 {
-  "name": "wwww-web3",
-  "version": "0.0.1",
+  "name": "@manifoldfinance/fold-dapp",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "prod": "./prod.sh",
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_ENV=production npx next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "npx tsc --pretty --noEmit",
     "format": "npx prettier --write \"**/*.tsx\" \"**/*.ts\"",
-    "postinstall": "yarn compile-contract-types",
     "analyze": "ANALYZE=true next build",
     "compile-contract-types": "npx typechain --target ethers-v5 --out-dir './contracts/types' './contracts/*.json'"
   },
