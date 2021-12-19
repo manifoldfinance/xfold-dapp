@@ -80,7 +80,10 @@ interface BasketBalancerInterface extends ethers.utils.Interface {
     functionFragment: 'poolRouter',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: 'DictatorDAO',
+    values?: undefined,
+  ): string;
   encodeFunctionData(
     functionFragment: 'xfoldDiamond',
     values?: undefined,
@@ -133,7 +136,10 @@ interface BasketBalancerInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: 'maxDelta', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'poolRouter', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'DictatorDAO',
+    data: BytesLike,
+  ): Result;
   decodeFunctionResult(
     functionFragment: 'xfoldDiamond',
     data: BytesLike,

@@ -105,7 +105,10 @@ interface PoolRouterInterface extends ethers.utils.Interface {
     functionFragment: 'protocolFee',
     values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: 'DictatorDAO', values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: 'DictatorDAO',
+    values?: undefined,
+  ): string;
   encodeFunctionData(functionFragment: 'smartPool', values?: undefined): string;
   encodeFunctionData(functionFragment: 'foldToken', values?: undefined): string;
   encodeFunctionData(functionFragment: 'treasury', values?: undefined): string;
@@ -173,7 +176,10 @@ interface PoolRouterInterface extends ethers.utils.Interface {
     functionFragment: 'protocolFee',
     data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: 'DictatorDAO', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'DictatorDAO',
+    data: BytesLike,
+  ): Result;
   decodeFunctionResult(functionFragment: 'smartPool', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'foldToken', data: BytesLike): Result;
   decodeFunctionResult(functionFragment: 'treasury', data: BytesLike): Result;

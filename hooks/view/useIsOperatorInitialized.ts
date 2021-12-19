@@ -1,4 +1,3 @@
-
 import type { DOMODAO as DictatorDAO } from '@/contracts/types';
 import useSWR from 'swr';
 //import { DOMODAO } from '../useContract';
@@ -19,11 +18,10 @@ export default function useIsOperatorInitialized() {
   return useSWR(
     // @ts-ignore
     !!contract ? ['IsOperatorInitialized'] : null,
-        // @ts-ignore
+    // @ts-ignore
     getIsOperatorInitialized(contract),
   );
 }
 function useDOMODAO() {
   throw new Error('Function not implemented.');
 }
-

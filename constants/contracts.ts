@@ -1,12 +1,11 @@
 import { SupportedChainId } from './chains';
 
-
 export enum ContractNames {
   STAKING = 'Staking',
   DOMODAO = 'DictatorDAO',
   OPERATOR_ADDRESS = 'Operator',
-  FOLD = "FOLD",
-  FOLD_ADDRESS = "FOLD"
+  FOLD = 'FOLD',
+  FOLD_ADDRESS = 'FOLD',
 }
 
 type AddressMap = Record<SupportedChainId, string>;

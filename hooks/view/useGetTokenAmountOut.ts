@@ -46,7 +46,7 @@ export default function useGetTokenAmountOut(burnToken: string) {
     TOKEN_ADDRESSES.FOLD[chainId],
   );
 
-  const poolDictatorDao = DictatorDAO
+  const poolDictatorDao = DictatorDAO;
 
   const burnTokenContract = useTokenContract(burnToken);
 
@@ -57,10 +57,8 @@ export default function useGetTokenAmountOut(burnToken: string) {
     typeof burnToken === 'string';
 
   return useSWR(
-    shouldFetch
-      ? ['GetTokenAmountOut', burnToken, foldBalance, chainId]
-      : null,
-      // @ts-ignore
+    shouldFetch ? ['GetTokenAmountOut', burnToken, foldBalance, chainId] : null,
+    // @ts-ignore
     getGetTokenAmountOut(burnToken, burnTokenContract),
   );
 }

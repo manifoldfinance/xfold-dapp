@@ -1,4 +1,3 @@
-
 import type { DOMODAO as DictatorDAO } from '@/contracts/types';
 import useSWR from 'swr';
 import { useDictatorDAO } from '../useContract';
