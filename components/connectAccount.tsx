@@ -10,13 +10,13 @@ export default function ConnectAccount() {
         <div className="bg-primary-400 rounded-xl ring-1 ring-inset ring-white ring-opacity-10 p-4">
           <div className="space-y-4">
             <h1 className="text-lg leading-none font-semibold text-center">
-              Manifold Finance Interface
+              Manifold Finance FOLD Staking
             </h1>
 
             <div className="space-y-2 text-gray-300">
-              <p>⛔️ ACHTUNG! Obacht! Aufgepasst! 🆘</p>
+              <p></p>
 
-              <p>You MUST be VACCINATED</p>
+              <p>Please read our Guide first!</p>
             </div>
 
             <Button onClick={openWalletModal}>{`Connect Wallet`}</Button>

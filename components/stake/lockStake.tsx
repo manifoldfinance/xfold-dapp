@@ -1,4 +1,4 @@
-import { useDictatorDAO } from '@/hooks/useContract';
+//import { useDictatorDAO } from '@/hooks/useContract';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import { useFoldToken, useTokenContract } from '@/hooks/useContract';

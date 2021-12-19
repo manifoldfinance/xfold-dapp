@@ -4,7 +4,7 @@ import useContinuousTokenAllocation from '@/hooks/view/useContinuousTokenAllocat
 import useHasVotedInEpoch from '@/hooks/view/useHasVotedInEpoch';
 import useIsOperatorInitialized from '@/hooks/view/useIsOperatorInitialized';
 import useMaxDelta from '@/hooks/view/useMaxDelta';
-import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/usexFOLDStaked';
 import useTokenAllocation from '@/hooks/view/useTokenAllocation';
 import handleError from '@/utils/handleError';
 import { parseUnits } from '@ethersproject/units';

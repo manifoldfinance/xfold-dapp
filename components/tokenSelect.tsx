@@ -52,7 +52,7 @@ export default function TokenSelect({
               decoding="async"
               height={24}
               loading="lazy"
-              src={`https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/${value?.symbol}.svg`}
+              src={`https://raw.githubusercontent.com/manifoldfinance/website/master/public/token.png`}
               width={24}
             />
           )}
@@ -93,7 +93,7 @@ export default function TokenSelect({
                       decoding="async"
                       height={20}
                       loading="lazy"
-                      src={`https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/${token.symbol}.svg`}
+                      src={`https://raw.githubusercontent.com/manifoldfinance/website/master/public/token.png`}
                       width={20}
                     />
 
@@ -157,7 +157,7 @@ export function TokenPair({
                 width={24}
                 height={24}
                 className="rounded-full w-6 h-6"
-                src={`/tokens/${pair}.png`}
+                src={`https://raw.githubusercontent.com/manifoldfinance/website/master/public/token.png`}
                 alt={pair}
               />
             </div>

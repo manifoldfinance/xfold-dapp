@@ -40,12 +40,12 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href={SUSHI_SWAP_LINKS.XFOLD}
+              href={SUSHI_SWAP_LINKS.xFOLD}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
             >
-              Buy xFOLD on SushiSwap
+              xFOLD
             </a>
           )}
         </Menu.Item>
@@ -62,7 +62,7 @@ export default function OverflowMenu() {
         <Menu.Item>
           {({ active }) => (
             <a
-              href="https://app.manifold.finance"
+              href="https://manifoldfinance.com"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(menuItemClassNames, active && 'bg-white/[0.10]')}
