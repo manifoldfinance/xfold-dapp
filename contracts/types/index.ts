@@ -4,10 +4,10 @@ import { UniswapV2Pair } from './UniswapV2Pair.d';
 /* eslint-disable */
 export type { DOMODAO } from './DOMODAO';
 export type { ERC20 } from './ERC20';
-export type { FOLD } from './FOLD'; 
-export type { UniswapV2Pair } from './UniswapV2Pair'
+export type { FOLD } from './FOLD';
+export type { UniswapV2Pair } from './UniswapV2Pair';
 
 export { DOMODAO__factory } from './factories/DOMODAO__factory';
 export { ERC20__factory } from './factories/ERC20__factory';
 export { FOLD__factory } from './factories/FOLD__factory';
-export type { LPRewards } from './LPRewards'
+export type { LPRewards } from './LPRewards';

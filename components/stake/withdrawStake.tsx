@@ -21,7 +21,6 @@ import {
   isBigNumberish,
 } from '@ethersproject/bignumber/lib/bignumber';
 
-
 dayjs.extend(relativeTime);
 
 export default function WithdrawStake() {
@@ -59,12 +58,11 @@ export default function WithdrawStake() {
         throw new Error(`Maximum Withdraw: ${formattedXFOLDStaked} XFOLD`);
       }
 
-     
       const transaction = await XFOLD.burn(
-         // @ts-ignore
+        // @ts-ignore
         to,
-         // @ts-ignore
-        shares
+        // @ts-ignore
+        shares,
       );
 
       withdrawInput.clear();
