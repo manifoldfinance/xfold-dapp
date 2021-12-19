@@ -115,7 +115,7 @@ export default function WithdrawStake() {
 
           <div className="flex-1">
             <label className="sr-only" htmlFor="stakeWithdraw">
-              Enter amount of xFold to burn for FOLD
+              Amount to unstake
             </label>
 
             <NumericalInput
