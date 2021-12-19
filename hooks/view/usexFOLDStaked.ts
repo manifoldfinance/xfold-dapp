@@ -1,9 +1,10 @@
-import type { XFOLDFacet } from '@/contracts/types';
+import { useDictatorDAO } from '@/hooks/useContract';
+import type { DOMODAO } from '@/contracts/types';
 import useSWR from 'swr';
-import { useXFOLDFacetProxy } from '../useContract';
+
 import useWeb3Store from '../useWeb3Store';
 
-function getXFOLDStaked(contract: XFOLDFacet) {
+function getXFOLDStaked(contract: DOMODAO) {
   return async (_: string, user: string) => {
     const value = await contract.balanceOf(user);
 
@@ -14,7 +15,7 @@ function getXFOLDStaked(contract: XFOLDFacet) {
 export default function useXFOLDStaked() {
   const account = useWeb3Store((state) => state.account);
 
-  const contract = useXFOLDFacetProxy();
+  const contract = useDictatorDAO();
 
   const shouldFetch = !!contract && typeof account === 'string';
 

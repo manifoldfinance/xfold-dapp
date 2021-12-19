@@ -1,43 +1,43 @@
-import { BALANCER_POOL_ADDRESS } from '@/constants/contracts';
+import { DictatorDAO } from './../../contracts/types/DictatorDAO.d';
+import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
-import type { ERC20, PoolRouter } from '@/contracts/types';
+import { ERC20, FOLD, DOMODAO } from '@/contracts/types';
 import { BigNumber } from '@ethersproject/bignumber';
 import useSWR from 'swr';
-import { usePoolRouter, useTokenContract } from '../useContract';
+import { useTokenContract } from '../useContract';
 import useWeb3Store from '../useWeb3Store';
 import useTokenBalance from './useTokenBalance';
 
 function getGetTokenAmountOut(
-  poolRouter: PoolRouter,
-  withdrawTokenContract: ERC20,
+  poolDictatorDao: DOMODAO,
+  burnTokenContract: ERC20,
 ) {
   return async (
     _: string,
-    withdrawToken: string,
+    burnToken: string,
     foldAmountIn: BigNumber,
     chainId: number,
   ) => {
-    const getTokenAmountOutSingle = await poolRouter.getTokenAmountOutSingle(
-      withdrawToken,
+    const getTokenAmountOutBurn = await poolDictatorDao.burn(
+      burnToken,
       foldAmountIn,
-      1,
     );
 
-    const poolBalance = await withdrawTokenContract.balanceOf(
-      BALANCER_POOL_ADDRESS[chainId],
+    const poolBalance = await burnTokenContract.balanceOf(
+      CONTRACT_ADDRESSES[chainId],
     );
 
     const maxWithdraw = poolBalance.div(3);
 
-    if (getTokenAmountOutSingle.gt(maxWithdraw)) {
+    if (getTokenAmountOutBurn.hash) {
       return maxWithdraw;
     }
 
-    return getTokenAmountOutSingle;
+    return getTokenAmountOutBurn;
   };
 }
 
-export default function useGetTokenAmountOut(withdrawToken: string) {
+export default function useGetTokenAmountOut(burnToken: string) {
   const account = useWeb3Store((state) => state.account);
   const chainId = useWeb3Store((state) => state.chainId);
 
@@ -46,20 +46,19 @@ export default function useGetTokenAmountOut(withdrawToken: string) {
     TOKEN_ADDRESSES.FOLD[chainId],
   );
 
-  const poolRouter = usePoolRouter();
+  const poolDictatorDao = DictatorDAO;
 
-  const withdrawTokenContract = useTokenContract(withdrawToken);
+  const burnTokenContract = useTokenContract(burnToken);
 
   const shouldFetch =
-    !!poolRouter &&
-    !!withdrawTokenContract &&
+    !!poolDictatorDao &&
+    !!burnTokenContract &&
     !!foldBalance &&
-    typeof withdrawToken === 'string';
+    typeof burnToken === 'string';
 
   return useSWR(
-    shouldFetch
-      ? ['GetTokenAmountOut', withdrawToken, foldBalance, chainId]
-      : null,
-    getGetTokenAmountOut(poolRouter, withdrawTokenContract),
+    shouldFetch ? ['GetTokenAmountOut', burnToken, foldBalance, chainId] : null,
+    // @ts-ignore
+    getGetTokenAmountOut(burnToken, burnTokenContract),
   );
 }

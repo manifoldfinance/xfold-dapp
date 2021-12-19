@@ -1,16 +1,17 @@
-import type { XFOLDFacet } from '@/contracts/types';
+import { useDictatorDAO } from '@/hooks/useContract';
+import type { DOMODAO } from '@/contracts/types';
 import calculateLockupMultiplier from '@/utils/calculateLockupMultiplier';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import useSWR from 'swr';
-import { useXFOLDFacetProxy } from '../useContract';
+import { useFoldToken } from '../useContract';
 import useWeb3Store from '../useWeb3Store';
 
 dayjs.extend(utc);
 
-function getUserLockedUntil(contract: XFOLDFacet) {
+function getUserLockedUntil(contract: DOMODAO) {
   return async (_: string, address: string) => {
-    const lockedUntilTimestamp = await contract.userLockedUntil(address);
+    const lockedUntilTimestamp = await contract.GRACE_PERIOD();
 
     const timestamp = lockedUntilTimestamp.toNumber();
 
@@ -33,7 +34,7 @@ function getUserLockedUntil(contract: XFOLDFacet) {
 
 export default function useUserLockedUntil() {
   const account = useWeb3Store((state) => state.account);
-  const contract = useXFOLDFacetProxy();
+  const contract = useDictatorDAO();
 
   const shouldFetch = !!contract && typeof account === 'string';
 

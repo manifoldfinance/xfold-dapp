@@ -1,6 +1,7 @@
-import { useXFOLDFacetProxy } from '@/hooks/useContract';
+import { useDictatorDAO } from '@/hooks/useContract';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
+import { useFoldToken, useTokenContract } from '@/hooks/useContract';
 import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
 import useUserLockedUntil from '@/hooks/view/useUserLockedUntil';
 import calculateLockupMultiplier from '@/utils/calculateLockupMultiplier';
@@ -19,7 +20,8 @@ export default function LockStake() {
 
   const lockupPeriod = useInput();
 
-  const USDFacet = useXFOLDFacetProxy();
+  const FOLD_ERC20 = useFoldToken();
+
 
   const { data: userLockedUntil, mutate: userLockedUntilMutate } =
     useUserLockedUntil();
@@ -59,7 +61,7 @@ export default function LockStake() {
         days === 365 * 2 ? days - 1 : days,
       );
 
-      const transaction = await USDFacet.lock(BigNumber.from(futureTimestamp));
+      const transaction = await FOLD_ERC20.lock(BigNumber.from(futureTimestamp));
 
       lockupPeriod.clear();
 

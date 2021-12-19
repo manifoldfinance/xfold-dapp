@@ -1,6 +1,6 @@
 import { MIN_INPUT_VALUE } from '@/constants/numbers';
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
-import { useXFOLDFacetProxy } from '@/hooks/useContract';
+import { useDictatorDao } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
@@ -16,6 +16,8 @@ import Button, { MaxButton } from '../button';
 import { TransactionToast } from '../customToast';
 import NumericalInput from '../numericalInput';
 import { TokenSingle } from '../tokenSelect';
+import { BigNumber, isBigNumberish } from '@ethersproject/bignumber/lib/bignumber';
+
 
 dayjs.extend(relativeTime);
 
@@ -25,12 +27,12 @@ export default function WithdrawStake() {
 
   const { mutate: xfoldBalanceMutate } = useTokenBalance(
     account,
-    TOKEN_ADDRESSES.XFOLD[chainId],
+    TOKEN_ADDRESSES.xFOLD[chainId],
   );
 
   const { data: xfoldStaked, mutate: xfoldStakedMutate } = useXFOLDStaked();
 
-  const USDFacet = useXFOLDFacetProxy();
+  const XFOLD = useDictatorDao();
 
   const withdrawInput = useInput();
 
@@ -54,7 +56,7 @@ export default function WithdrawStake() {
         throw new Error(`Maximum Withdraw: ${formattedXFOLDStaked} XFOLD`);
       }
 
-      const transaction = await USDFacet.withdraw(amount);
+      const transaction = await XFOLD.burn(to, String);
 
       withdrawInput.clear();
 
@@ -100,11 +102,11 @@ export default function WithdrawStake() {
 
       <div>
         <div className="flex space-x-4 mb-2">
-          <TokenSingle symbol="XFOLD" />
+          <TokenSingle symbol="xFOLD" />
 
           <div className="flex-1">
             <label className="sr-only" htmlFor="stakeWithdraw">
-              Enter amount of XFOLD to withdraw
+              Enter amount of xFold to withdraw
             </label>
 
             <NumericalInput

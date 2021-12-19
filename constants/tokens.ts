@@ -97,9 +97,10 @@ export const SUSHI_SWAP_LINKS: Partial<Record<TokenNames, string>> = {
 };
 
 export const TOKEN_BUY_LINKS: Partial<Record<TokenNames, string>> = {
-  [TokenNames.FOLD]: 'https://app.sushi.com/swap?outputCurrency=0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
+  [TokenNames.FOLD]:
+    'https://app.sushi.com/swap?outputCurrency=0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
   [TokenNames.USDC]: '#',
-  [TokenNames.ETH]:  '#',
-  [TokenNames.SLP]:  '#',
+  [TokenNames.ETH]: '#',
+  [TokenNames.SLP]: '#',
   [TokenNames.XFOLD]: '#',
 };

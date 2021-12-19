@@ -1,7 +1,6 @@
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
 import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import { MaxUint256, MIN_INPUT_VALUE } from '@/constants/numbers';
-import { useXFOLDFacetProxy, useTokenContract } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
@@ -17,12 +16,13 @@ import Button, { MaxButton } from '../button';
 import { TransactionToast } from '../customToast';
 import NumericalInput from '../numericalInput';
 import { TokenSingle } from '../tokenSelect';
+import { useFoldToken, useTokenContract } from '@/hooks/useContract';
 
 export default function DepositStake() {
   const account = useWeb3Store((state) => state.account);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const USDFacet = useXFOLDFacetProxy();
+  const FOLD_ERC20 = useFoldToken();
 
   const { data: xfoldBalance, mutate: xfoldBalanceMutate } = useTokenBalance(
     account,
@@ -31,26 +31,26 @@ export default function DepositStake() {
 
   const { mutate: xfoldStakedMutate } = useXFOLDStaked();
 
-  const formattedXFOLDBalance = useFormattedBigNumber(xfoldBalance);
+  const formattedFOLDBalance = useFormattedBigNumber(xfoldBalance);
 
   const depositInput = useInput();
 
   const xfoldContract = useTokenContract(TOKEN_ADDRESSES.xFOLD[chainId]);
 
-  const { data: xfoldAllowance, mutate: xfoldAllowanceMutate } =
+  const { data: foldAllowance, mutate: xfoldAllowanceMutate } =
     useTokenAllowance(
       TOKEN_ADDRESSES.xFOLD[chainId],
       account,
-      CONTRACT_ADDRESSES.XFOLDFacetProxy[chainId],
+      CONTRACT_ADDRESSES.DictatorDAO[chainId],
     );
 
-  const xfoldNeedsApproval = useMemo(() => {
-    if (!!xfoldAllowance && depositInput.hasValue) {
-      return xfoldAllowance.isZero();
+  const foldNeedsApproval = useMemo(() => {
+    if (!!foldAllowance && depositInput.hasValue) {
+      return foldAllowance.isZero();
     }
 
     return;
-  }, [xfoldAllowance, depositInput.hasValue]);
+  }, [foldAllowance, depositInput.hasValue]);
 
   async function depositXFOLD(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -61,16 +61,16 @@ export default function DepositStake() {
       const depositAmount = depositInput.value;
 
       if (Number(depositAmount) <= MIN_INPUT_VALUE) {
-        throw new Error(`Minium Deposit: ${MIN_INPUT_VALUE} XFOLD`);
+        throw new Error(`Minium Deposit: ${MIN_INPUT_VALUE} FOLD`);
       }
 
       const amount = parseUnits(depositAmount);
 
       if (amount.gt(xfoldBalance)) {
-        throw new Error(`Maximum Deposit: ${formattedXFOLDBalance} XFOLD`);
+        throw new Error(`Maximum Deposit: ${formattedFOLDBalance} FOLD`);
       }
 
-      const transaction = await USDFacet.deposit(amount);
+      const transaction = await FOLD_ERC20.deposit(amount);
 
       depositInput.clear();
 
@@ -78,7 +78,7 @@ export default function DepositStake() {
         <TransactionToast
           hash={transaction.hash}
           chainId={chainId}
-          message={`Deposit ${depositAmount} XFOLD`}
+          message={`Deposit ${depositAmount} FOLD`}
         />,
         { id: _id },
       );
@@ -89,7 +89,7 @@ export default function DepositStake() {
         <TransactionToast
           hash={transaction.hash}
           chainId={chainId}
-          message={`Deposit ${depositAmount} XFOLD`}
+          message={`Mint ${depositAmount} xFOLD`}
         />,
         { id: _id },
       );
@@ -106,15 +106,15 @@ export default function DepositStake() {
 
     try {
       const transaction = await xfoldContract.approve(
-        CONTRACT_ADDRESSES.XFOLDFacetProxy[chainId],
+        CONTRACT_ADDRESSES.DictatorDAO[chainId],
         MaxUint256,
       );
 
-      toast.loading(`Approve xFOLD`, { id: _id });
+      toast.loading(`Approve FOLD`, { id: _id });
 
       await transaction.wait();
 
-      toast.success(`Approve xFOLD`, { id: _id });
+      toast.success(`Approve FOLD`, { id: _id });
 
       xfoldAllowanceMutate();
     } catch (error) {
@@ -154,9 +154,9 @@ export default function DepositStake() {
         </div>
 
         <p className="text-sm text-gray-300 h-5">
-          {xfoldBalance && formattedXFOLDBalance ? (
+          {xfoldBalance && formattedFOLDBalance ? (
             <>
-              <span>{`Balance: ${formattedXFOLDBalance} xFOLD`}</span>{' '}
+              <span>{`Balance: ${formattedFOLDBalance} FOLD`}</span>{' '}
               {!inputIsMax && <MaxButton onClick={setMax} />}
             </>
           ) : null}
@@ -164,14 +164,14 @@ export default function DepositStake() {
       </div>
 
       <div className="space-y-4">
-        {xfoldNeedsApproval && (
+        {foldNeedsApproval && (
           <Button onClick={approveXFOLD}>
-            {`Approve Manifold Finance To Spend Your XFOLD`}
+            {`Approve Manifold Finance To Spend Your FOLD`}
           </Button>
         )}
 
         <Button
-          disabled={!depositInput.hasValue || xfoldNeedsApproval}
+          disabled={!depositInput.hasValue || foldNeedsApproval}
           type="submit"
         >
           {depositInput.hasValue ? 'Deposit' : 'Enter an amount'}
