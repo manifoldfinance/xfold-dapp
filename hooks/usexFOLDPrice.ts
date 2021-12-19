@@ -5,7 +5,7 @@ import { Contract } from '@ethersproject/contracts';
 import type { Web3Provider } from '@ethersproject/providers';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { useXFOLDWETHRewards } from './useContract';
+import { useFOLDUSDCRewards } from './useContract';
 import useWeb3Store from './useWeb3Store';
 
 function getXFOLDPrice(lpRewards: LPRewards, library: Web3Provider) {
@@ -39,12 +39,13 @@ export default function useXFOLDPrice() {
   const library = useWeb3Store((state) => state.library);
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const lpRewards = useXFOLDWETHRewards();
+  const lpRewards = useFOLDUSDCRewards();
 
   const shouldFetch = !!library && !!lpRewards && typeof chainId === 'number';
 
   return useSWR(
     shouldFetch ? ['XFOLDPrice', chainId] : null,
+    // @ts-ignore
     getXFOLDPrice(lpRewards, library),
   );
 }

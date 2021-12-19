@@ -35,7 +35,7 @@ export default function DepositStake() {
 
   const depositInput = useInput();
 
-  const xfoldContract = useTokenContract(TOKEN_ADDRESSES.xFOLD[chainId]);
+  const xfoldContract = useTokenContract(TOKEN_ADDRESSES.FOLD[chainId]);
 
   const { data: foldAllowance, mutate: xfoldAllowanceMutate } =
     useTokenAllowance(

@@ -1,7 +1,7 @@
 import type { FOLD } from '@/contracts/types';
 import { parseUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { useFoldToken } from '../useContract';
+import { useFoldToken } from './useContract';
 
 function getFoldAmountOut(contract: FOLD) {
   return async (_: string, depositAmount: string, depositToken: string) => {

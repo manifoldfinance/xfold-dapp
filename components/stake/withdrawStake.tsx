@@ -1,6 +1,6 @@
 import { MIN_INPUT_VALUE } from '@/constants/numbers';
 import { TOKEN_ADDRESSES } from '@/constants/tokens';
-import { useDictatorDao } from '@/hooks/useContract';
+import { useDictatorDAO } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
@@ -35,7 +35,7 @@ export default function WithdrawStake() {
 
   const { data: xfoldStaked, mutate: xfoldStakedMutate } = useXFOLDStaked();
 
-  const XFOLD = useDictatorDao();
+  const XFOLD = useDictatorDAO();
 
   const withdrawInput = useInput();
 
@@ -130,7 +130,7 @@ export default function WithdrawStake() {
         <p className="text-sm text-gray-300 h-5">
           {xfoldStaked && formattedXFOLDStaked ? (
             <>
-              <span>{`Available: ${formattedXFOLDStaked} XFOLD`}</span>{' '}
+              <span>{`Available: ${formattedXFOLDStaked} xFOLD`}</span>{' '}
               {!inputIsMax && <MaxButton onClick={setMax} />}
             </>
           ) : null}

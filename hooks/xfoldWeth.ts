@@ -13,7 +13,7 @@ import { Contract } from '@ethersproject/contracts';
 import type { Web3Provider } from '@ethersproject/providers';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { useXFOLDWETHRewards, useStaking } from './useContract';
+import { useFoldToken, useStaking } from './useContract';
 import useXFOLDPrice from './useXFOLDPrice';
 import useWeb3Store from './useWeb3Store';
 
@@ -75,7 +75,7 @@ function getXFOLDWETHLPRewardsAPY(lpRewards: LPRewards, library: Web3Provider) {
     ) as ERC20;
 
     const totalStaked = await poolTokenContract.balanceOf(
-      CONTRACT_ADDRESSES.Staking[chainId],
+      CONTRACT_ADDRESSES.DictatorDAO[chainId],
     );
 
     const totalUSDValueStaked =
@@ -161,3 +161,7 @@ export default function useXFOLDWETHLPRewardsExpectedRewards(
     },
   );
 }
+function useXFOLDWETHRewards() {
+  throw new Error('Function not implemented.');
+}
+

@@ -33,7 +33,7 @@ export default function DAOProgress() {
     <Panel>
       <div className="space-y-4">
         <div>
-          <p className="font-medium leading-5 mb-1">DAO Progress</p>
+          <p className="font-medium leading-5 mb-1">MajorDomo Progress</p>
 
           <p className="text-sm text-gray-300">until the Operator is activated</p>
         </div>
@@ -49,7 +49,7 @@ export default function DAOProgress() {
         <div
           aria-label={`${progress.toFixed(
             2,
-          )}% complete with funding of the DAO`}
+          )}% complete of MajorDomo`}
           aria-valuenow={parseFloat(progress.toFixed(2))}
           aria-valuemin={0}
           aria-valuemax={100}

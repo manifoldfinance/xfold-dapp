@@ -2,11 +2,11 @@ import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import ERC20_ABI from '@/contracts/ERC20.json';
 import FOLD_ABI from '@/contracts/FOLD.json';
 import DOMODAO_ABI from '@/contracts/DictatorDao.json';
-import type { ERC20, DOMODAO, FOLD } from '@/contracts/types';
+import type { ERC20, DOMODAO as DictatorDao, FOLD } from '@/contracts/types';
 import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
-import { DOMODAO as DictatorDAO } from '@/contracts/types/DictatorDAO';
+
 
 const chainIdSelector = (state: State) => state.chainId;
 const accountSelector = (state: State) => state.account;
@@ -38,11 +38,11 @@ export function useTokenContract(tokenAddress?: string) {
   return useContract<ERC20>(tokenAddress, ERC20_ABI);
 }
 
-export function useDictatorDao() {
+export function useOperatorAddress() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<DOMODAO>(
-    CONTRACT_ADDRESSES.DictatorDAO[chainId],
+  return useContract<DictatorDAO>(
+    CONTRACT_ADDRESSES.Operator[chainId],
     DOMODAO_ABI,
   );
 }
@@ -60,4 +60,18 @@ export function useDictatorDAO() {
     CONTRACT_ADDRESSES.DictatorDAO[chainId],
     DOMODAO_ABI,
   );
+}
+
+// TODO - useFutureDate, getBalanceOf = calculate user 
+export function useFOLDUSDCRewards() {
+  const chainId = useWeb3Store(chainIdSelector);
+
+  return useContract<FOLD>(CONTRACT_ADDRESSES.FOLD[chainId], FOLD_ABI);
+}
+
+// TODO - getBalanceOf
+export function useStaking() {
+  const chainId = useWeb3Store(chainIdSelector);
+
+  return useContract<FOLD>(CONTRACT_ADDRESSES.FOLD[chainId], FOLD_ABI);
 }
