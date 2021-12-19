@@ -10,7 +10,7 @@ import type {
 import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
-import { DictatorDAO } from '@/contracts/types/DictatorDAO';
+import { DOMODAO as DictatorDAO } from '@/contracts/types/DictatorDAO';
 
 
 const chainIdSelector = (state: State) => state.chainId;

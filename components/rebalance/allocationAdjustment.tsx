@@ -1,4 +1,4 @@
-import { useBasketBalancer, useDictatorDAO } from '@/hooks/useContract';
+import { useFoldToken, useDictatorDAO } from '@/hooks/useContract';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import useContinuousTokenAllocation from '@/hooks/view/useContinuousTokenAllocation';
 import useHasVotedInEpoch from '@/hooks/view/useHasVotedInEpoch';
@@ -18,7 +18,7 @@ import { TransactionToast } from '../customToast';
 export default function AllocationAdjustment() {
   const chainId = useWeb3Store((state) => state.chainId);
 
-  const basketBalancer = useBasketBalancer();
+  const basketBalancer = useFoldToken();
 
   
   const DictatorDAO = useDictatorDAO();
@@ -103,10 +103,10 @@ export default function AllocationAdjustment() {
   }
 
   async function enableVoting() {
-    const _id = toast.loading('Waiting for confirmation');
+    const _id = toast.loading('Waiting to set operator');
 
     try {
-      const transaction = await DictatorDAO.triggerWeightUpdate();
+      const transaction = await DictatorDAO.setOperator();
 
       toast.loading(
         <TransactionToast
