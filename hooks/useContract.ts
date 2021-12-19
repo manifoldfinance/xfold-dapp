@@ -7,7 +7,6 @@ import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
 
-
 const chainIdSelector = (state: State) => state.chainId;
 const accountSelector = (state: State) => state.account;
 const librarySelector = (state: State) => state.library;
@@ -62,7 +61,7 @@ export function useDictatorDAO() {
   );
 }
 
-// TODO - useFutureDate, getBalanceOf = calculate user 
+// TODO - useFutureDate, getBalanceOf = calculate user
 export function useFOLDUSDCRewards() {
   const chainId = useWeb3Store(chainIdSelector);
 

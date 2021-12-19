@@ -164,4 +164,3 @@ export default function useXFOLDWETHLPRewardsExpectedRewards(
 function useXFOLDWETHRewards() {
   throw new Error('Function not implemented.');
 }
-
