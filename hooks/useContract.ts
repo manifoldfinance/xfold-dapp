@@ -6,6 +6,7 @@ import type { ERC20, DOMODAO as DictatorDao, FOLD } from '@/contracts/types';
 import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
+import { DOMODAO } from '@/contracts/types/DictatorDAO';
 
 const chainIdSelector = (state: State) => state.chainId;
 const accountSelector = (state: State) => state.account;
@@ -40,7 +41,7 @@ export function useTokenContract(tokenAddress?: string) {
 export function useOperatorAddress() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<DictatorDAO>(
+  return useContract<DOMODAO>(
     CONTRACT_ADDRESSES.Operator[chainId],
     DOMODAO_ABI,
   );
@@ -55,7 +56,7 @@ export function useFoldToken() {
 export function useDictatorDAO() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<DictatorDAO>(
+  return useContract<DictatorDao>(
     CONTRACT_ADDRESSES.DictatorDAO[chainId],
     DOMODAO_ABI,
   );
