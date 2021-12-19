@@ -1,28 +1,34 @@
-import type { GovRewards } from '@/contracts/types';
-import type { BigNumber } from '@ethersproject/bignumber';
+import { CONTRACT_ADDRESSES } from '@/constants/contracts';
+import { Contract } from '@ethersproject/contracts';
+import type { DOMODAO as DictatorDAO } from '@/contracts/types';
+import type { BigNumber, BigNumberish } from '@ethersproject/bignumber';
 import { formatUnits } from '@ethersproject/units';
 import useSWR from 'swr';
-import { useGovRewards } from './useContract';
+import { useDictatorDAO } from './useContract';
+import { DOMODAOInterface } from '@/contracts/types/DictatorDAO';
 
-function getGovRewardsAPY(contract: GovRewards) {
+function getGovRewardsAPY(contract: DictatorDAO) {
   return async () => {
-    const totalStake: BigNumber = await contract.getPoolSizeAtTs(Date.now());
+    const totalSupply = 2_000_000;
+    //(Date.now());
 
-    const rewardsForEpoch: BigNumber = await contract.getRewardsForEpoch();
+    const getRewardsForEpoch = 30;
 
-    const totalRewards = rewardsForEpoch.mul(52);
+    const rewardsForEpoch: number = await getRewardsForEpoch;
+
+    const totalRewards = rewardsForEpoch;
 
     const apy =
       (parseFloat(formatUnits(totalRewards)) /
-        parseFloat(formatUnits(totalStake))) *
+        parseFloat(formatUnits(totalSupply))) *
       100;
 
     return apy;
   };
 }
 
-export default function useGovRewardsAPY() {
-  const contract = useGovRewards();
+export default function useDictatorDAOAPY() {
+  const contract = useDictatorDAO();
 
   const shouldFetch = !!contract;
 

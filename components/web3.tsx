@@ -9,6 +9,7 @@ import { Menu } from '@headlessui/react';
 import cn from 'classnames';
 import { useCallback, useMemo } from 'react';
 import Identicon from './identicon';
+import { BigNumberish, BigNumber } from '@ethersproject/bignumber';
 
 const menuItemClassNames =
   'flex rounded items-center w-full p-2 text-sm focus:outline-none';

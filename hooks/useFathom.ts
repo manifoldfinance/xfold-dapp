@@ -9,7 +9,7 @@ export default function useFathom() {
 
   useEffect(() => {
     Fathom.load(SITE_ID, {
-      includedDomains: ['app.manifold.finance'],
+      includedDomains: ['app.manifoldfinance.com'],
     });
 
     function onRouteChangeComplete() {

@@ -2,11 +2,15 @@ import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import ERC20_ABI from '@/contracts/ERC20.json';
 import FOLD_ABI from '@/contracts/FOLD.json';
 import DOMODAO_ABI from '@/contracts/DictatorDao.json';
-import type { ERC20, DOMODAO as DictatorDao, FOLD, DOMODAO } from '@/contracts/types';
+import {
+  DictatorDAO,
+  FOLD,
+  DOMODAO,
+  ERC20,
+} from '@/contracts/types';
 import { Contract } from '@ethersproject/contracts';
 import { useMemo } from 'react';
 import useWeb3Store, { State } from './useWeb3Store';
-
 
 const chainIdSelector = (state: State) => state.chainId;
 const accountSelector = (state: State) => state.account;
@@ -53,10 +57,16 @@ export function useFoldToken() {
   return useContract<FOLD>(CONTRACT_ADDRESSES.FOLD[chainId], FOLD_ABI);
 }
 
+export function useXFoldToken() {
+  const chainId = useWeb3Store(chainIdSelector);
+
+  return useContract<DOMODAO>(CONTRACT_ADDRESSES.Staking[chainId], DOMODAO_ABI);
+}
+
 export function useDictatorDAO() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<DictatorDao>(
+  return useContract<DictatorDAO>(
     CONTRACT_ADDRESSES.DictatorDAO[chainId],
     DOMODAO_ABI,
   );
@@ -73,5 +83,9 @@ export function useFOLDUSDCRewards() {
 export function useStaking() {
   const chainId = useWeb3Store(chainIdSelector);
 
-  return useContract<FOLD>(CONTRACT_ADDRESSES.FOLD[chainId], FOLD_ABI);
+  // USDC Mainnet
+  return useContract<ERC20>(
+    (0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48)[chainId],
+    ERC20_ABI,
+  );
 }

@@ -1,16 +1,17 @@
-import { GovRewards, XFOLDFacet } from '@/contracts/types';
+import { usexFOLDStaked } from '@/hooks/view/usexFOLDStaked';
+import { GovRewards, DOMODAO as DictatorDAO  } from '@/contracts/types';
 import { btof } from '@/utils/bn';
 import useSWR from 'swr';
-import { useGovRewards, useXFOLDFacetProxy } from './useContract';
+import { useGovRewards, useTokenContract } from './useContract';
 
 function getGovRewardsExpectedRewards(
-  USDFacet: XFOLDFacet,
+  xFOLDUSDC: DictatorDAO,
   govRewards: GovRewards,
 ) {
   return async (_: string, userAddress: string) => {
-    const balanceOf = await USDFacet.balanceOf(userAddress);
+    const balanceOf = await xFOLDUSDC.balanceOf(userAddress);
 
-    const xfoldStaked = await USDFacet.xfoldStaked();
+    const xfoldStaked = balanceOf;
 
     const rewardsForEpoch = await govRewards.getRewardsForEpoch();
 
@@ -22,16 +23,16 @@ function getGovRewardsExpectedRewards(
 }
 
 export default function useGovRewardsExpectedRewards(userAddress: string) {
-  const USDFacet = useXFOLDFacetProxy();
+  const xFOLDUSDC = usexFOLDStaked();
 
   const govRewards = useGovRewards();
 
   const shouldFetch =
-    !!govRewards && !!USDFacet && typeof userAddress === 'string';
+    !!govRewards && !!xFOLDUSDC && typeof userAddress === 'string';
 
   return useSWR(
     shouldFetch ? ['GovRewardsExpectedRewards', userAddress] : null,
-    getGovRewardsExpectedRewards(USDFacet, govRewards),
+    getGovRewardsExpectedRewards(xFOLDUSDC, govRewards),
     {
       shouldRetryOnError: false,
     },

@@ -1,28 +1,22 @@
-import type { XFOLDFacet } from '@/contracts/types';
+import { TOKEN_ADDRESSES } from '@/constants/tokens';
+import type { DictatorDAO } from '@/contracts/types';
 import useSWR from 'swr';
-import { useXFOLDFacetProxy } from '../useContract';
+import { useXFoldToken} from '../useContract';
 import useWeb3Store from '../useWeb3Store';
+import useTokenBalance from './useTokenBalance';
 
-function getVotingPower(USDFacet: XFOLDFacet) {
+function getVotingPower(XFold: DictatorDAO) {
   return async (_: string, userAddress: string) => {
     const timestamp = Date.now();
 
-    const votingPowerAtTs = await USDFacet.votingPowerAtTs(
-      userAddress,
-      timestamp,
-    );
 
-    const votingPower = await USDFacet.votingPower(userAddress);
 
-    const xfoldStaked = await USDFacet.xfoldStaked();
+    const xfoldStaked = useXFoldToken;
 
-    const xfoldStakedAtTs = await USDFacet.xfoldStakedAtTs(timestamp);
+//    const xfoldStakedAtTs = await XFold.xfoldStakedAtTs(timestamp);
 
     return {
-      votingPowerAtTs,
-      votingPower,
-      xfoldStaked,
-      xfoldStakedAtTs,
+      xfoldStaked
     };
   };
 }
@@ -30,12 +24,20 @@ function getVotingPower(USDFacet: XFOLDFacet) {
 export default function useVotingPower() {
   const account = useWeb3Store((state) => state.account);
 
-  const USDFacet = useXFOLDFacetProxy();
+  const XFold = useXFoldToken();
 
-  const shouldFetch = !!USDFacet && typeof account === 'string';
+  const shouldFetch = !!XFold && typeof account === 'string';
 
   return useSWR(
     shouldFetch ? ['VotingPower', account] : null,
-    getVotingPower(USDFacet),
+    getVotingPower(XFold),
   );
 }
+function account(account: any) {
+  throw new Error('Function not implemented.');
+}
+
+function tokenAddress(tokenAddress: any) {
+  throw new Error('Function not implemented.');
+}
+

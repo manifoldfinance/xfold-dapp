@@ -1,4 +1,4 @@
-import { DictatorDAO } from '@/contracts/types/DictatorDAO';
+import { DictatorDAO } from '@/contracts/types/Dictator';
 import { SupportedChainId } from '@/constants/chains';
 import { CONTRACT_ADDRESSES } from '@/constants/contracts';
 import { LP_EPOCH_REWARDS } from '@/constants/numbers';
@@ -6,7 +6,7 @@ import ERC20_ABI from '@/contracts/ERC20.json';
 import type {
   ERC20,
   LPRewards,
-  DOMODAO as DictatorDAO,
+  DOMODAO,
   UniswapV2Pair,
 } from '@/contracts/types';
 import UniswapV2Pair_ABI from '@/contracts/UniswapV2Pair.json';
@@ -44,7 +44,7 @@ function get(lpRewards: LPRewards, library: Web3Provider) {
   };
 }
 
-export function useFOLDUSDCLPPrice() {
+export function useFOLDUSDCPrice() {
   const library = useWeb3Store((state) => state.library);
   const chainId = useWeb3Store((state) => state.chainId);
 
@@ -54,7 +54,7 @@ export function useFOLDUSDCLPPrice() {
 
   return useSWR(
     shouldFetch ? ['FOLDUSDCLPPrice', chainId] : null,
-    getFOLDUSDCLPPrice(lpRewards, library),
+    useFOLDUSDCPrice(lpRewards, library),
   );
 }
 
@@ -74,7 +74,7 @@ function getFOLDUSDCLPRewardsAPY(lpRewards: LPRewards, library: Web3Provider) {
     ) as ERC20;
 
     const totalStaked = await poolTokenContract.balanceOf(
-      CONTRACT_ADDRESSES.DOMODAO[chainId],
+      CONTRACT_ADDRESSES.DictatorDAO[chainId],
     );
 
     const totalUSDValueStaked =
@@ -97,7 +97,7 @@ export function useFOLDUSDCLPRewardsAPY() {
   const lpRewards = useFOLDUSDCRewards();
 
   const { data: xfoldPrice } = useXFOLDPrice();
-  const { data: lpPrice } = useFOLDUSDCLPPrice();
+  const { data: lpPrice } = useFOLDUSDCPrice();
 
   const shouldFetch =
     !!lpRewards &&
