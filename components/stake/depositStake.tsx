@@ -4,7 +4,7 @@ import { MaxUint256, MIN_INPUT_VALUE } from '@/constants/numbers';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
-import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/usexFOLDStaked';
 import useTokenAllowance from '@/hooks/view/useTokenAllowance';
 import useTokenBalance from '@/hooks/view/useTokenBalance';
 import handleError from '@/utils/handleError';

@@ -17,8 +17,8 @@ export const EPOCH_REWARDS = 0;
 export const LP_EPOCH_REWARDS = 0;
 
 export const DAO_THRESHOLD = {
-  [SupportedChainId.MAINNET]: 2_000_000,
-  [SupportedChainId.RINKEBY]: 2_000_000,
+  [SupportedChainId.MAINNET]: 100_000,
+  [SupportedChainId.RINKEBY]: 100_000,
 };
 
 export const MaxUint256 = BigInt(

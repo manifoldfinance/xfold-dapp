@@ -2,7 +2,7 @@ import { useDictatorDAO } from '@/hooks/useContract';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
 import { useFoldToken, useTokenContract } from '@/hooks/useContract';
-import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/usexFOLDStaked';
 import useUserLockedUntil from '@/hooks/view/useUserLockedUntil';
 import calculateLockupMultiplier from '@/utils/calculateLockupMultiplier';
 import getFutureTimestamp from '@/utils/getFutureTimestamp';

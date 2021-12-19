@@ -4,7 +4,7 @@ import { useDictatorDao } from '@/hooks/useContract';
 import useFormattedBigNumber from '@/hooks/useFormattedBigNumber';
 import useInput from '@/hooks/useInput';
 import useWeb3Store from '@/hooks/useWeb3Store';
-import useXFOLDStaked from '@/hooks/view/useXFOLDStaked';
+import useXFOLDStaked from '@/hooks/view/usexFOLDStaked';
 import useTokenBalance from '@/hooks/view/useTokenBalance';
 import handleError from '@/utils/handleError';
 import { formatUnits, parseUnits } from '@ethersproject/units';
@@ -20,6 +20,7 @@ import {
   BigNumber,
   isBigNumberish,
 } from '@ethersproject/bignumber/lib/bignumber';
+
 
 dayjs.extend(relativeTime);
 
@@ -58,7 +59,13 @@ export default function WithdrawStake() {
         throw new Error(`Maximum Withdraw: ${formattedXFOLDStaked} XFOLD`);
       }
 
-      const transaction = await XFOLD.burn(to, String);
+     
+      const transaction = await XFOLD.burn(
+         // @ts-ignore
+        to,
+         // @ts-ignore
+        shares
+      );
 
       withdrawInput.clear();
 
@@ -66,7 +73,7 @@ export default function WithdrawStake() {
         <TransactionToast
           hash={transaction.hash}
           chainId={chainId}
-          message={`Withdraw ${withdrawAmount} XFOLD`}
+          message={`Withdraw ${withdrawAmount} FOLD`}
         />,
         { id: _id },
       );
@@ -77,7 +84,7 @@ export default function WithdrawStake() {
         <TransactionToast
           hash={transaction.hash}
           chainId={chainId}
-          message={`Withdraw ${withdrawAmount} XFOLD`}
+          message={`Withdraw ${withdrawAmount} FOLD`}
         />,
         { id: _id },
       );
@@ -108,7 +115,7 @@ export default function WithdrawStake() {
 
           <div className="flex-1">
             <label className="sr-only" htmlFor="stakeWithdraw">
-              Enter amount of xFold to withdraw
+              Enter amount of xFold to burn for FOLD
             </label>
 
             <NumericalInput

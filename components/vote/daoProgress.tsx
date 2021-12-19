@@ -35,7 +35,7 @@ export default function DAOProgress() {
         <div>
           <p className="font-medium leading-5 mb-1">DAO Progress</p>
 
-          <p className="text-sm text-gray-300">until the DAO is activated</p>
+          <p className="text-sm text-gray-300">until the Operator is activated</p>
         </div>
 
         <p className="text-4xl leading-none font-semibold h-9">
